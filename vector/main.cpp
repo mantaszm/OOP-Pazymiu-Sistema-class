@@ -288,30 +288,28 @@ int main() {
         case '1':
             std::sort(studentai.begin(), studentai.end(),
                 [](const Studentas& a, const Studentas& b) {
-                    return std::strcmp(a.vardas, b.vardas) < 0;
+                    return a.getVardas() < b.getVardas();
                 });
             break;
 
         case '2':
             std::sort(studentai.begin(), studentai.end(),
                 [](const Studentas& a, const Studentas& b) {
-                    return std::strcmp(a.pavarde, b.pavarde) < 0;
+                    return a.getPavarde() < b.getPavarde();
                 });
             break;
 
         case '3':
             std::sort(studentai.begin(), studentai.end(),
                 [](const Studentas& a, const Studentas& b) {
-                    return galutinisVid(a) < galutinisVid(b);
+                    return a.galutinisVid() < b.galutinisVid();
                 });
             break;
 
         case '4':
             std::sort(studentai.begin(), studentai.end(),
                 [](const Studentas& a, const Studentas& b) {
-                    double medA = a.namuDarbaiMed100 * 0.004 + a.egzaminas * 0.6;
-                    double medB = b.namuDarbaiMed100 * 0.004 + b.egzaminas * 0.6;
-                    return medA < medB;
+                    return a.galutinisMed() < b.galutinisMed();
                 });
             break;
 
@@ -355,13 +353,10 @@ int main() {
     *out << std::fixed << std::setprecision(2);
 
     for (const auto& i : studentai) {
-        double vid = galutinisVid(i);
-        double med = i.namuDarbaiMed100 * 0.004 + i.egzaminas * 0.6;
-
-        *out << std::setw(14) << i.vardas
-             << std::setw(17) << i.pavarde
-             << std::setw(17) << vid
-             << std::setw(17) << med << "\n";
+        *out << std::setw(14) << i.getVardas()
+             << std::setw(17) << i.getPavarde()
+             << std::setw(17) << i.galutinisVid()
+             << std::setw(17) << i.galutinisMed() << "\n";
     }
 
     if (!studentai.empty()) {
