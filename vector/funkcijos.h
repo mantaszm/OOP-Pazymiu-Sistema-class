@@ -15,16 +15,46 @@
 #include <cstring>
 #include <sstream>
 
-struct Studentas {
-    uint16_t namuDarbaiVid100{};
-    uint16_t namuDarbaiMed100{};
-    uint8_t egzaminas{};
-    char vardas[14]{};
-    char pavarde[17]{};
-    std::vector<short int> ND{};
-};
+class Studentas {
+private:
+    uint16_t namuDarbaiVid100_;
+    uint16_t namuDarbaiMed100_;
+    uint8_t egzaminas_;
+    std::string vardas_;
+    std::string pavarde_;
+    std::vector<short int> ND_;
 
-double galutinisVid(const Studentas& s);
+public:
+    Studentas();
+
+    Studentas(const std::string& vardas,
+              const std::string& pavarde,
+              uint8_t egzaminas,
+              uint16_t namuDarbaiVid100,
+              uint16_t namuDarbaiMed100,
+              const std::vector<short int>& ND = {});
+
+    // Getteriai
+    uint16_t getNamuDarbaiVid100() const;
+    uint16_t getNamuDarbaiMed100() const;
+    uint8_t getEgzaminas() const;
+    const std::string& getVardas() const;
+    const std::string& getPavarde() const;
+    const std::vector<short int>& getND() const;
+
+    // Setteriai
+    void setNamuDarbaiVid100(uint16_t value);
+    void setNamuDarbaiMed100(uint16_t value);
+    void setEgzaminas(uint8_t value);
+    void setVardas(const std::string& value);
+    void setPavarde(const std::string& value);
+    void setND(const std::vector<short int>& value);
+    void addND(short int pazymys);
+
+    // Skaičiavimai
+    double galutinisVid() const;
+    double galutinisMed() const;
+};
 
 std::vector<Studentas> readFile(const std::string& filename, bool saveND = false);
 std::vector<Studentas> readTerminal();
