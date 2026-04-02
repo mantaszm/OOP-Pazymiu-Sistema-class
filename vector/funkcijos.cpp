@@ -1,7 +1,84 @@
 #include "funkcijos.h"
 
-double galutinisVid(const Studentas& s) {
-    return s.namuDarbaiVid100 * 0.004 + s.egzaminas * 0.6;
+Studentas::Studentas()
+    : namuDarbaiVid100_(0),
+      namuDarbaiMed100_(0),
+      egzaminas_(0),
+      vardas_(""),
+      pavarde_(""),
+      ND_() {}
+
+Studentas::Studentas(const std::string& vardas,
+                     const std::string& pavarde,
+                     uint8_t egzaminas,
+                     uint16_t namuDarbaiVid100,
+                     uint16_t namuDarbaiMed100,
+                     const std::vector<short int>& ND)
+    : namuDarbaiVid100_(namuDarbaiVid100),
+      namuDarbaiMed100_(namuDarbaiMed100),
+      egzaminas_(egzaminas),
+      vardas_(vardas),
+      pavarde_(pavarde),
+      ND_(ND) {}
+
+uint16_t Studentas::getNamuDarbaiVid100() const {
+    return namuDarbaiVid100_;
+}
+
+uint16_t Studentas::getNamuDarbaiMed100() const {
+    return namuDarbaiMed100_;
+}
+
+uint8_t Studentas::getEgzaminas() const {
+    return egzaminas_;
+}
+
+const std::string& Studentas::getVardas() const {
+    return vardas_;
+}
+
+const std::string& Studentas::getPavarde() const {
+    return pavarde_;
+}
+
+const std::vector<short int>& Studentas::getND() const {
+    return ND_;
+}
+
+void Studentas::setNamuDarbaiVid100(uint16_t value) {
+    namuDarbaiVid100_ = value;
+}
+
+void Studentas::setNamuDarbaiMed100(uint16_t value) {
+    namuDarbaiMed100_ = value;
+}
+
+void Studentas::setEgzaminas(uint8_t value) {
+    egzaminas_ = value;
+}
+
+void Studentas::setVardas(const std::string& value) {
+    vardas_ = value;
+}
+
+void Studentas::setPavarde(const std::string& value) {
+    pavarde_ = value;
+}
+
+void Studentas::setND(const std::vector<short int>& value) {
+    ND_ = value;
+}
+
+void Studentas::addND(short int pazymys) {
+    ND_.push_back(pazymys);
+}
+
+double Studentas::galutinisVid() const {
+    return (namuDarbaiVid100_ / 100.0) * 0.4 + egzaminas_ * 0.6;
+}
+
+double Studentas::galutinisMed() const {
+    return (namuDarbaiMed100_ / 100.0) * 0.4 + egzaminas_ * 0.6;
 }
 
 std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
@@ -18,16 +95,13 @@ std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
 
     while (std::getline(in, line)) {
         std::stringstream ss(line);
-        Studentas temp{};
+        Studentas temp;
 
         std::string vardas, pavarde;
         ss >> vardas >> pavarde;
 
-        std::strncpy(temp.vardas, vardas.c_str(), sizeof(temp.vardas) - 1);
-        temp.vardas[sizeof(temp.vardas) - 1] = '\0';
-
-        std::strncpy(temp.pavarde, pavarde.c_str(), sizeof(temp.pavarde) - 1);
-        temp.pavarde[sizeof(temp.pavarde) - 1] = '\0';
+        temp.setVardas(vardas);
+        temp.setPavarde(pavarde);
 
         std::vector<short int> nd;
         int x = 0;
@@ -38,13 +112,17 @@ std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
 
         if (nd.empty()) continue;
 
-        temp.egzaminas = static_cast<uint8_t>(nd.back());
+        temp.setEgzaminas(static_cast<uint8_t>(nd.back()));
         nd.pop_back();
 
         int suma = 0;
-        for (short int v : nd) suma += v;
+        for (short int v : nd) {
+            suma += v;
+        }
 
-        if (saveND) temp.ND = nd;
+        if (saveND) {
+            temp.setND(nd);
+        }
 
         std::sort(nd.begin(), nd.end());
 
@@ -59,11 +137,13 @@ std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
             }
         }
 
-        temp.namuDarbaiVid100 = (n > 0)
-            ? static_cast<uint16_t>((static_cast<double>(suma) / static_cast<double>(n)) * 100.0)
-            : 0;
+        temp.setNamuDarbaiVid100(
+            (n > 0)
+                ? static_cast<uint16_t>((static_cast<double>(suma) / static_cast<double>(n)) * 100.0)
+                : 0
+        );
 
-        temp.namuDarbaiMed100 = static_cast<uint16_t>(med * 100.0);
+        temp.setNamuDarbaiMed100(static_cast<uint16_t>(med * 100.0));
 
         studentai.push_back(temp);
     }
@@ -73,7 +153,7 @@ std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
 
 std::vector<Studentas> readTerminal() {
     std::vector<Studentas> studentai;
-    Studentas temp{};
+    Studentas temp;
 
     int mode = 0;
     int kiekND = 0;
@@ -132,11 +212,13 @@ std::vector<Studentas> readTerminal() {
 
         if (mode != 3) {
             std::cout << "Norint baigti parasykite 'baigti'\nVardas: ";
-            std::cin.getline(temp.vardas, 14);
-            if (std::string(temp.vardas) == "baigti") break;
+            std::getline(std::cin, stringTemp);
+            if (stringTemp == "baigti") break;
+            temp.setVardas(stringTemp);
 
             std::cout << "Pavarde: ";
-            std::cin.getline(temp.pavarde, 17);
+            std::getline(std::cin, stringTemp);
+            temp.setPavarde(stringTemp);
         } else {
             std::string vardai[11] = {
                 "Jonas","Mantas","Lukas","Tomas","Dovydas",
@@ -147,11 +229,8 @@ std::vector<Studentas> readTerminal() {
                 "Vasiliauskas","Butkus","Navickas","Urbonas","Kavaliauskas","Stankevicius"
             };
 
-            std::strncpy(temp.vardas, vardai[distrib(gen)].c_str(), sizeof(temp.vardas) - 1);
-            temp.vardas[sizeof(temp.vardas) - 1] = '\0';
-
-            std::strncpy(temp.pavarde, pavardes[distrib(gen)].c_str(), sizeof(temp.pavarde) - 1);
-            temp.pavarde[sizeof(temp.pavarde) - 1] = '\0';
+            temp.setVardas(vardai[distrib(gen)]);
+            temp.setPavarde(pavardes[distrib(gen)]);
         }
 
         int suma = 0;
@@ -182,7 +261,7 @@ std::vector<Studentas> readTerminal() {
                 kiek++;
             }
 
-            temp.egzaminas = static_cast<uint8_t>(distrib(gen));
+            temp.setEgzaminas(static_cast<uint8_t>(distrib(gen)));
         }
 
         std::sort(nd_pazymiai.begin(), nd_pazymiai.end());
@@ -197,18 +276,20 @@ std::vector<Studentas> readTerminal() {
             }
         }
 
-        temp.namuDarbaiMed100 = static_cast<uint16_t>(nd_med * 100.0);
+        temp.setNamuDarbaiMed100(static_cast<uint16_t>(nd_med * 100.0));
 
-        if (kiek > 0)
-            temp.namuDarbaiVid100 =
-                static_cast<uint16_t>((static_cast<double>(suma) / static_cast<double>(kiek)) * 100.0);
-        else
-            temp.namuDarbaiVid100 = 0;
+        if (kiek > 0) {
+            temp.setNamuDarbaiVid100(
+                static_cast<uint16_t>((static_cast<double>(suma) / static_cast<double>(kiek)) * 100.0)
+            );
+        } else {
+            temp.setNamuDarbaiVid100(0);
+        }
 
         if (mode == 1) {
             std::cout << "Egzamino pazymys: ";
             std::getline(std::cin, stringTemp);
-            temp.egzaminas = static_cast<uint8_t>(std::stoi(stringTemp));
+            temp.setEgzaminas(static_cast<uint8_t>(std::stoi(stringTemp)));
         }
 
         studentai.push_back(temp);
@@ -263,15 +344,16 @@ void splitStudents(std::string dataFileName, std::string newFileName) {
 
     if (mokiniai.empty()) return;
 
-    int kiekND = static_cast<int>(mokiniai[0].ND.size());
+    int kiekND = static_cast<int>(mokiniai[0].getND().size());
 
     auto printHeader = [&](std::ostream& out) {
         out << std::left
             << std::setw(14) << "Vardas"
             << std::setw(17) << "Pavarde";
 
-        for (int i = 1; i <= kiekND; i++)
+        for (int i = 1; i <= kiekND; i++) {
             out << std::setw(10) << ("ND" + std::to_string(i));
+        }
 
         out << std::setw(10) << "Egz." << "\n";
     };
@@ -280,16 +362,17 @@ void splitStudents(std::string dataFileName, std::string newFileName) {
     printHeader(outBad);
 
     for (const auto& s : mokiniai) {
-        std::ostream& out = (galutinisVid(s) >= 5.0) ? outGood : outBad;
+        std::ostream& out = (s.galutinisVid() >= 5.0) ? outGood : outBad;
 
         out << std::left
-            << std::setw(14) << s.vardas
-            << std::setw(17) << s.pavarde;
+            << std::setw(14) << s.getVardas()
+            << std::setw(17) << s.getPavarde();
 
-        for (short int nd : s.ND)
+        for (short int nd : s.getND()) {
             out << std::setw(10) << nd;
+        }
 
-        out << std::setw(10) << static_cast<int>(s.egzaminas) << "\n";
+        out << std::setw(10) << static_cast<int>(s.getEgzaminas()) << "\n";
     }
 }
 
@@ -309,8 +392,11 @@ void testDataProcessing(const std::string& fileName) {
 
     std::vector<Studentas> good, bad;
     for (const auto& s : students) {
-        if (galutinisVid(s) >= 5.0) good.push_back(s);
-        else bad.push_back(s);
+        if (s.galutinisVid() >= 5.0) {
+            good.push_back(s);
+        } else {
+            bad.push_back(s);
+        }
     }
     auto t2 = std::chrono::high_resolution_clock::now();
 
@@ -328,16 +414,22 @@ void testTime(int testSize, int ndSize) {
     testDataProcessing("students.txt");
 }
 
-void splitVector1(const std::vector<Studentas>& studentai, std::vector<Studentas>& vargsiukai, std::vector<Studentas>& kietiakai) {
+void splitVector1(const std::vector<Studentas>& studentai,
+                  std::vector<Studentas>& vargsiukai,
+                  std::vector<Studentas>& kietiakai) {
     for (const auto& s : studentai) {
-        if (galutinisVid(s) < 5.0) vargsiukai.push_back(s);
-        else kietiakai.push_back(s);
+        if (s.galutinisVid() < 5.0) {
+            vargsiukai.push_back(s);
+        } else {
+            kietiakai.push_back(s);
+        }
     }
 }
 
-void splitVector2(std::vector<Studentas>& studentai, std::vector<Studentas>& vargsiukai) {
-    for (auto it = studentai.begin(); it != studentai.end(); ) {
-        if (galutinisVid(*it) < 5.0) {
+void splitVector2(std::vector<Studentas>& studentai,
+                  std::vector<Studentas>& vargsiukai) {
+    for (auto it = studentai.begin(); it != studentai.end();) {
+        if (it->galutinisVid() < 5.0) {
             vargsiukai.push_back(*it);
             it = studentai.erase(it);
         } else {
@@ -346,10 +438,11 @@ void splitVector2(std::vector<Studentas>& studentai, std::vector<Studentas>& var
     }
 }
 
-void splitVector3(std::vector<Studentas>& studentai, std::vector<Studentas>& vargsiukai) {
+void splitVector3(std::vector<Studentas>& studentai,
+                  std::vector<Studentas>& vargsiukai) {
     auto it = std::partition(studentai.begin(), studentai.end(),
         [](const Studentas& s) {
-            return galutinisVid(s) >= 5.0;
+            return s.galutinisVid() >= 5.0;
         });
 
     for (auto i = it; i != studentai.end(); ++i) {
@@ -359,16 +452,22 @@ void splitVector3(std::vector<Studentas>& studentai, std::vector<Studentas>& var
     studentai.erase(it, studentai.end());
 }
 
-void splitList1(const std::list<Studentas>& studentai, std::list<Studentas>& vargsiukai, std::list<Studentas>& kietiakai) {
+void splitList1(const std::list<Studentas>& studentai,
+                std::list<Studentas>& vargsiukai,
+                std::list<Studentas>& kietiakai) {
     for (const auto& s : studentai) {
-        if (galutinisVid(s) < 5.0) vargsiukai.push_back(s);
-        else kietiakai.push_back(s);
+        if (s.galutinisVid() < 5.0) {
+            vargsiukai.push_back(s);
+        } else {
+            kietiakai.push_back(s);
+        }
     }
 }
 
-void splitList2(std::list<Studentas>& studentai, std::list<Studentas>& vargsiukai) {
-    for (auto it = studentai.begin(); it != studentai.end(); ) {
-        if (galutinisVid(*it) < 5.0) {
+void splitList2(std::list<Studentas>& studentai,
+                std::list<Studentas>& vargsiukai) {
+    for (auto it = studentai.begin(); it != studentai.end();) {
+        if (it->galutinisVid() < 5.0) {
             vargsiukai.push_back(*it);
             it = studentai.erase(it);
         } else {
@@ -377,9 +476,10 @@ void splitList2(std::list<Studentas>& studentai, std::list<Studentas>& vargsiuka
     }
 }
 
-void splitList3(std::list<Studentas>& studentai, std::list<Studentas>& vargsiukai) {
-    for (auto it = studentai.begin(); it != studentai.end(); ) {
-        if (galutinisVid(*it) < 5.0) {
+void splitList3(std::list<Studentas>& studentai,
+                std::list<Studentas>& vargsiukai) {
+    for (auto it = studentai.begin(); it != studentai.end();) {
+        if (it->galutinisVid() < 5.0) {
             auto temp = it++;
             vargsiukai.splice(vargsiukai.end(), studentai, temp);
         } else {
@@ -388,16 +488,22 @@ void splitList3(std::list<Studentas>& studentai, std::list<Studentas>& vargsiuka
     }
 }
 
-void splitDeque1(const std::deque<Studentas>& studentai, std::deque<Studentas>& vargsiukai, std::deque<Studentas>& kietiakai) {
+void splitDeque1(const std::deque<Studentas>& studentai,
+                 std::deque<Studentas>& vargsiukai,
+                 std::deque<Studentas>& kietiakai) {
     for (const auto& s : studentai) {
-        if (galutinisVid(s) < 5.0) vargsiukai.push_back(s);
-        else kietiakai.push_back(s);
+        if (s.galutinisVid() < 5.0) {
+            vargsiukai.push_back(s);
+        } else {
+            kietiakai.push_back(s);
+        }
     }
 }
 
-void splitDeque2(std::deque<Studentas>& studentai, std::deque<Studentas>& vargsiukai) {
-    for (auto it = studentai.begin(); it != studentai.end(); ) {
-        if (galutinisVid(*it) < 5.0) {
+void splitDeque2(std::deque<Studentas>& studentai,
+                 std::deque<Studentas>& vargsiukai) {
+    for (auto it = studentai.begin(); it != studentai.end();) {
+        if (it->galutinisVid() < 5.0) {
             vargsiukai.push_back(*it);
             it = studentai.erase(it);
         } else {
@@ -406,10 +512,11 @@ void splitDeque2(std::deque<Studentas>& studentai, std::deque<Studentas>& vargsi
     }
 }
 
-void splitDeque3(std::deque<Studentas>& studentai, std::deque<Studentas>& vargsiukai) {
+void splitDeque3(std::deque<Studentas>& studentai,
+                 std::deque<Studentas>& vargsiukai) {
     auto it = std::partition(studentai.begin(), studentai.end(),
         [](const Studentas& s) {
-            return galutinisVid(s) >= 5.0;
+            return s.galutinisVid() >= 5.0;
         });
 
     for (auto i = it; i != studentai.end(); ++i) {
