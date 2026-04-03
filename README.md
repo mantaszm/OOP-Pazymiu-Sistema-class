@@ -4,7 +4,7 @@
 
 Šio darbo tikslas – palyginti dviejų programos realizacijų spartą:
 
-- ankstesnio darbo versiją, kur naudojamas `struct`
+- ankstesnioji versija, kur naudojamas `struct`
 - dabartinę versiją, kur naudojama `class`
 
 Palyginimas atliekamas naudojant:
@@ -70,7 +70,7 @@ g++ -O3 -std=c++20 main.cpp funkcijos.cpp -o programa_O3
 
 ## Rezultatų analizė
 
-Atlikus `struct` ir `class` realizacijų spartos tyrimą, naudojant `std::list` konteinerį ir trečią strategiją, buvo gauti šie rezultatai.
+Atlikus `struct` ir `class` realizacijų spartos tyrimą, naudojant `std::list` konteinerį ir trečią strategiją , buvo gauti šie rezultatai.
 
 ### Pastebėjimai
 
