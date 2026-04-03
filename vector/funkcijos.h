@@ -34,7 +34,7 @@ public:
               uint16_t namuDarbaiMed100,
               const std::vector<short int>& ND = {});
 
-    // Getteriai
+    // geteriai
     uint16_t getNamuDarbaiVid100() const;
     uint16_t getNamuDarbaiMed100() const;
     uint8_t getEgzaminas() const;
@@ -42,7 +42,7 @@ public:
     const std::string& getPavarde() const;
     const std::vector<short int>& getND() const;
 
-    // Setteriai
+    // seteriai
     void setNamuDarbaiVid100(uint16_t value);
     void setNamuDarbaiMed100(uint16_t value);
     void setEgzaminas(uint8_t value);
@@ -51,7 +51,7 @@ public:
     void setND(const std::vector<short int>& value);
     void addND(short int pazymys);
 
-    // Skaičiavimai
+    // skaiciavimai
     double galutinisVid() const;
     double galutinisMed() const;
 };
