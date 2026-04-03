@@ -95,7 +95,7 @@ Atlikus `struct` ir `class` realizacijų spartos tyrimą, naudojant `std::list` 
 
 ## Programų dydžių palyginimas
 
-| Optimizacija | class (KB) | struct (KB) | Skirtumas |
+| Optimizacija | class (KB) | struct (KB) | Skirtumas (struct - class) |
 |-------------:|--------------------:|------------:|----------:|
 | O1           | 192                 | 162         | -30 KB    |
 | O2           | 186                 | 154         | -32 KB    |
