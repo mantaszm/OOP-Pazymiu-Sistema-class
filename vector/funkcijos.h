@@ -26,6 +26,7 @@ private:
 
 public:
     Studentas();
+    ~Studentas();
 
     Studentas(const std::string& vardas,
               const std::string& pavarde,
