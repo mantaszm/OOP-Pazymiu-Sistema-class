@@ -1,6 +1,6 @@
 #include "funkcijos.h"
 
-Studentas::Studentas()
+Studentas::Studentas() //klases deklaracija
     : namuDarbaiVid100_(0),
       namuDarbaiMed100_(0),
       egzaminas_(0),
@@ -8,7 +8,7 @@ Studentas::Studentas()
       pavarde_(""),
       ND_() {}
 
-Studentas::Studentas(const std::string& vardas,
+Studentas::Studentas(const std::string& vardas,    //konstruktorius
                      const std::string& pavarde,
                      uint8_t egzaminas,
                      uint16_t namuDarbaiVid100,
@@ -20,7 +20,7 @@ Studentas::Studentas(const std::string& vardas,
       vardas_(vardas),
       pavarde_(pavarde),
       ND_(ND) {}
-
+//seteriai
 uint16_t Studentas::getNamuDarbaiVid100() const {
     return namuDarbaiVid100_;
 }
@@ -72,7 +72,7 @@ void Studentas::setND(const std::vector<short int>& value) {
 void Studentas::addND(short int pazymys) {
     ND_.push_back(pazymys);
 }
-
+//skaiciavimo funkcijos
 double Studentas::galutinisVid() const {
     return (namuDarbaiVid100_ / 100.0) * 0.4 + egzaminas_ * 0.6;
 }
