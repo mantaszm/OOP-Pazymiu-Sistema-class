@@ -20,6 +20,9 @@ Studentas::Studentas(const std::string& vardas,    //konstruktorius
       vardas_(vardas),
       pavarde_(pavarde),
       ND_(ND) {}
+
+Studentas::~Studentas() = default;
+
 //geteriai
 uint16_t Studentas::getNamuDarbaiVid100() const {
     return namuDarbaiVid100_;
