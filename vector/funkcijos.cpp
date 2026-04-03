@@ -20,7 +20,7 @@ Studentas::Studentas(const std::string& vardas,    //konstruktorius
       vardas_(vardas),
       pavarde_(pavarde),
       ND_(ND) {}
-//seteriai
+//geteriai
 uint16_t Studentas::getNamuDarbaiVid100() const {
     return namuDarbaiVid100_;
 }
@@ -44,7 +44,7 @@ const std::string& Studentas::getPavarde() const {
 const std::vector<short int>& Studentas::getND() const {
     return ND_;
 }
-
+//seteriai
 void Studentas::setNamuDarbaiVid100(uint16_t value) {
     namuDarbaiVid100_ = value;
 }
