@@ -1,6 +1,7 @@
 #include "funkcijos.h"
 
-Studentas::Studentas() //klases deklaracija
+// Studentas: konstruktoriai
+Studentas::Studentas()
     : namuDarbaiVid100_(0),
       namuDarbaiMed100_(0),
       egzaminas_(0),
@@ -8,7 +9,7 @@ Studentas::Studentas() //klases deklaracija
       pavarde_(""),
       ND_() {}
 
-Studentas::Studentas(const std::string& vardas,    //konstruktorius
+Studentas::Studentas(const std::string& vardas,
                      const std::string& pavarde,
                      uint8_t egzaminas,
                      uint16_t namuDarbaiVid100,
@@ -23,7 +24,55 @@ Studentas::Studentas(const std::string& vardas,    //konstruktorius
 
 Studentas::~Studentas() = default;
 
-//geteriai
+Studentas::Studentas(const Studentas& other)
+    : namuDarbaiVid100_(other.namuDarbaiVid100_),
+      namuDarbaiMed100_(other.namuDarbaiMed100_),
+      egzaminas_(other.egzaminas_),
+      vardas_(other.vardas_),
+      pavarde_(other.pavarde_),
+      ND_(other.ND_) {}
+
+Studentas& Studentas::operator=(const Studentas& other) {
+    if (this != &other) {
+        namuDarbaiVid100_ = other.namuDarbaiVid100_;
+        namuDarbaiMed100_ = other.namuDarbaiMed100_;
+        egzaminas_ = other.egzaminas_;
+        vardas_ = other.vardas_;
+        pavarde_ = other.pavarde_;
+        ND_ = other.ND_;
+    }
+    return *this;
+}
+
+Studentas::Studentas(Studentas&& other) noexcept
+    : namuDarbaiVid100_(other.namuDarbaiVid100_),
+      namuDarbaiMed100_(other.namuDarbaiMed100_),
+      egzaminas_(other.egzaminas_),
+      vardas_(std::move(other.vardas_)),
+      pavarde_(std::move(other.pavarde_)),
+      ND_(std::move(other.ND_)) {
+    other.namuDarbaiVid100_ = 0;
+    other.namuDarbaiMed100_ = 0;
+    other.egzaminas_ = 0;
+}
+
+Studentas& Studentas::operator=(Studentas&& other) noexcept {
+    if (this != &other) {
+        namuDarbaiVid100_ = other.namuDarbaiVid100_;
+        namuDarbaiMed100_ = other.namuDarbaiMed100_;
+        egzaminas_ = other.egzaminas_;
+        vardas_ = std::move(other.vardas_);
+        pavarde_ = std::move(other.pavarde_);
+        ND_ = std::move(other.ND_);
+
+        other.namuDarbaiVid100_ = 0;
+        other.namuDarbaiMed100_ = 0;
+        other.egzaminas_ = 0;
+    }
+    return *this;
+}
+
+// Geteriai
 uint16_t Studentas::getNamuDarbaiVid100() const {
     return namuDarbaiVid100_;
 }
@@ -47,7 +96,8 @@ const std::string& Studentas::getPavarde() const {
 const std::vector<short int>& Studentas::getND() const {
     return ND_;
 }
-//seteriai
+
+// Seteriai
 void Studentas::setNamuDarbaiVid100(uint16_t value) {
     namuDarbaiVid100_ = value;
 }
@@ -75,7 +125,8 @@ void Studentas::setND(const std::vector<short int>& value) {
 void Studentas::addND(short int pazymys) {
     ND_.push_back(pazymys);
 }
-//skaiciavimo funkcijos
+
+// Skaiciavimo funkcijos
 double Studentas::galutinisVid() const {
     return (namuDarbaiVid100_ / 100.0) * 0.4 + egzaminas_ * 0.6;
 }
@@ -84,6 +135,63 @@ double Studentas::galutinisMed() const {
     return (namuDarbaiMed100_ / 100.0) * 0.4 + egzaminas_ * 0.6;
 }
 
+std::istream& operator>>(std::istream& in, Studentas& s) {
+    std::string vardas, pavarde;
+    in >> vardas >> pavarde;
+
+    s.setVardas(vardas);
+    s.setPavarde(pavarde);
+
+    std::vector<short int> nd;
+    int x;
+
+    // skaitom visus likusius skaicius
+    while (in >> x) {
+        nd.push_back(static_cast<short int>(x));
+        if (in.peek() == '\n') break; // stop eilutes gale
+    }
+
+    if (!nd.empty()) {
+        s.setEgzaminas(static_cast<uint8_t>(nd.back()));
+        nd.pop_back();
+
+        int suma = 0;
+        for (auto v : nd) suma += v;
+
+        std::sort(nd.begin(), nd.end());
+
+        double med = 0;
+        int n = nd.size();
+
+        if (n > 0) {
+            if (n % 2 == 0)
+                med = (nd[n/2 - 1] + nd[n/2]) / 2.0;
+            else
+                med = nd[n/2];
+        }
+
+        s.setNamuDarbaiVid100(
+            n > 0 ? static_cast<uint16_t>((double)suma / n * 100.0) : 0
+        );
+
+        s.setNamuDarbaiMed100(static_cast<uint16_t>(med * 100.0));
+        s.setND(nd);
+    }
+
+    return in;
+}
+
+std::ostream& operator<<(std::ostream& out, const Studentas& s) {
+    out << std::left
+        << std::setw(12) << s.getVardas()
+        << std::setw(15) << s.getPavarde()
+        << std::setw(10) << s.galutinisVid()
+        << std::setw(10) << s.galutinisMed();
+
+    return out;
+}
+
+// Failo skaitymas
 std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
     std::ifstream in(filename);
     std::vector<Studentas> studentai;
@@ -93,60 +201,18 @@ std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
         return studentai;
     }
 
-    std::string line;
-    std::getline(in, line);
+    std::string header;
+    std::getline(in, header);
 
+    std::string line;
     while (std::getline(in, line)) {
         std::stringstream ss(line);
         Studentas temp;
+        ss >> temp;
 
-        std::string vardas, pavarde;
-        ss >> vardas >> pavarde;
-
-        temp.setVardas(vardas);
-        temp.setPavarde(pavarde);
-
-        std::vector<short int> nd;
-        int x = 0;
-
-        while (ss >> x) {
-            nd.push_back(static_cast<short int>(x));
+        if (!saveND) {
+            temp.setND({});
         }
-
-        if (nd.empty()) continue;
-
-        temp.setEgzaminas(static_cast<uint8_t>(nd.back()));
-        nd.pop_back();
-
-        int suma = 0;
-        for (short int v : nd) {
-            suma += v;
-        }
-
-        if (saveND) {
-            temp.setND(nd);
-        }
-
-        std::sort(nd.begin(), nd.end());
-
-        std::size_t n = nd.size();
-        double med = 0.0;
-
-        if (n > 0) {
-            if (n % 2 == 0) {
-                med = (nd[n / 2 - 1] + nd[n / 2]) / 2.0;
-            } else {
-                med = nd[n / 2];
-            }
-        }
-
-        temp.setNamuDarbaiVid100(
-            (n > 0)
-                ? static_cast<uint16_t>((static_cast<double>(suma) / static_cast<double>(n)) * 100.0)
-                : 0
-        );
-
-        temp.setNamuDarbaiMed100(static_cast<uint16_t>(med * 100.0));
 
         studentai.push_back(temp);
     }
@@ -154,6 +220,7 @@ std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
     return studentai;
 }
 
+// Skaitymas is terminalo
 std::vector<Studentas> readTerminal() {
     std::vector<Studentas> studentai;
     Studentas temp;
@@ -302,6 +369,7 @@ std::vector<Studentas> readTerminal() {
     return studentai;
 }
 
+// Failo generavimas
 void generateFile(int kiekStud, int kiekND, std::string fileName) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -334,6 +402,7 @@ void generateFile(int kiekStud, int kiekND, std::string fileName) {
     }
 }
 
+// Studentu skaidymas i failus
 void splitStudents(std::string dataFileName, std::string newFileName) {
     std::vector<Studentas> mokiniai = readFile(dataFileName, true);
 
@@ -379,6 +448,7 @@ void splitStudents(std::string dataFileName, std::string newFileName) {
     }
 }
 
+// Testavimo funkcijos
 void testFileCreation(int kiekStud, int kiekND, const std::string& fileName) {
     auto start = std::chrono::high_resolution_clock::now();
     generateFile(kiekStud, kiekND, fileName);
@@ -417,6 +487,7 @@ void testTime(int testSize, int ndSize) {
     testDataProcessing("students.txt");
 }
 
+// VECTOR strategijos
 void splitVector1(const std::vector<Studentas>& studentai,
                   std::vector<Studentas>& vargsiukai,
                   std::vector<Studentas>& kietiakai) {
@@ -455,6 +526,7 @@ void splitVector3(std::vector<Studentas>& studentai,
     studentai.erase(it, studentai.end());
 }
 
+// LIST strategijos
 void splitList1(const std::list<Studentas>& studentai,
                 std::list<Studentas>& vargsiukai,
                 std::list<Studentas>& kietiakai) {
@@ -491,6 +563,7 @@ void splitList3(std::list<Studentas>& studentai,
     }
 }
 
+// DEQUE strategijos
 void splitDeque1(const std::deque<Studentas>& studentai,
                  std::deque<Studentas>& vargsiukai,
                  std::deque<Studentas>& kietiakai) {
