@@ -6,6 +6,19 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <type_traits>
+
+void testAbstractBaseClass() {
+    static_assert(std::is_abstract<Zmogus>::value, "Zmogus turi buti abstrakti klase");
+    static_assert(std::is_base_of<Zmogus, Studentas>::value, "Studentas turi paveldeti is Zmogus");
+
+    Studentas s;
+    Zmogus* z = &s;
+
+    assert(z->getVardas() == "");
+    assert(z->getPavarde() == "");
+    assert(z->tipas() == "Studentas");
+}
 
 void testDefaultConstructor() {
     Studentas s;
@@ -116,7 +129,6 @@ void testSelfMoveAssignment() {
 
     a = std::move(a);
 
-    // Kadangi yra if (this != &other), objektas turi likti nepažeistas
     assert(a.getVardas() == "Rokas");
     assert(a.getPavarde() == "Rokaitis");
     assert(a.getEgzaminas() == 6);
@@ -131,7 +143,6 @@ void testDestructor() {
         assert(s.getVardas() == "Temp");
     }
 
-    // Jei programa čia nenulūžta, destruktorius suveikė teisingai.
     assert(true);
 }
 
@@ -151,7 +162,6 @@ void testGenerateFile() {
         ++lineCount;
     }
 
-    // turi būti 5 studentų eilutės
     assert(lineCount == 5);
 }
 
@@ -199,12 +209,12 @@ void testReadFileWithoutSavingND() {
     assert(studentai[0].getVardas() == "Tomas");
     assert(studentai[0].getPavarde() == "Tomaitis");
     assert(studentai[0].getEgzaminas() == 7);
-
-    // kai saveND == false, ND neturi būti saugomi objekte
     assert(studentai[0].getND().empty());
 }
 
-void testClass(){
+void testClass() {
+    testAbstractBaseClass();
+
     testDefaultConstructor();
     testParameterizedConstructor();
 
@@ -223,5 +233,4 @@ void testClass(){
     testReadFileWithoutSavingND();
 
     std::cout << "Visi pasirinkti testai sekmingai praeiti.\n";
-    return;
 }
