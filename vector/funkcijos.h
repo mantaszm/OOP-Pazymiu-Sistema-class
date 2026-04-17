@@ -16,17 +16,33 @@
 #include <sstream>
 #include <utility>
 
-class Studentas {
+class Zmogus {
+protected:
+    std::string vardas_;
+    std::string pavarde_;
+
+public:
+    Zmogus();
+    Zmogus(const std::string& vardas, const std::string& pavarde);
+    virtual ~Zmogus() = default;
+
+    const std::string& getVardas() const;
+    const std::string& getPavarde() const;
+
+    void setVardas(const std::string& value);
+    void setPavarde(const std::string& value);
+
+    virtual std::string tipas() const = 0;
+};
+
+class Studentas : public Zmogus {
 private:
     uint16_t namuDarbaiVid100_;
     uint16_t namuDarbaiMed100_;
     uint8_t egzaminas_;
-    std::string vardas_;
-    std::string pavarde_;
     std::vector<short int> ND_;
 
 public:
-    // Konstruktoriai / destruktorius
     Studentas();
     ~Studentas();
 
@@ -37,35 +53,31 @@ public:
               uint16_t namuDarbaiMed100,
               const std::vector<short int>& ND = {});
 
-    // Rule of Five
-    Studentas(const Studentas& other);                  // Copy constructor
-    Studentas& operator=(const Studentas& other);       // Copy assignment
-    Studentas(Studentas&& other) noexcept;              // Move constructor
-    Studentas& operator=(Studentas&& other) noexcept;   // Move assignment
+    Studentas(const Studentas& other);
+    Studentas& operator=(const Studentas& other);
+    Studentas(Studentas&& other) noexcept;
+    Studentas& operator=(Studentas&& other) noexcept;
 
-    // Geteriai
     uint16_t getNamuDarbaiVid100() const;
     uint16_t getNamuDarbaiMed100() const;
     uint8_t getEgzaminas() const;
-    const std::string& getVardas() const;
-    const std::string& getPavarde() const;
     const std::vector<short int>& getND() const;
 
-    // Seteriai
     void setNamuDarbaiVid100(uint16_t value);
     void setNamuDarbaiMed100(uint16_t value);
     void setEgzaminas(uint8_t value);
-    void setVardas(const std::string& value);
-    void setPavarde(const std::string& value);
     void setND(const std::vector<short int>& value);
     void addND(short int pazymys);
 
-    // Skaičiavimai
     double galutinisVid() const;
     double galutinisMed() const;
+
+    std::string tipas() const override;
 };
+
 std::istream& operator>>(std::istream& in, Studentas& s);
 std::ostream& operator<<(std::ostream& out, const Studentas& s);
+
 std::vector<Studentas> readFile(const std::string& filename, bool saveND = false);
 std::vector<Studentas> readTerminal();
 void generateFile(int kiekStud, int kiekND, std::string fileName);
@@ -75,7 +87,6 @@ void testDataProcessing(const std::string& fileName);
 void testTime(int testSize, int ndSize);
 void testClass();
 
-// VECTOR strategijos
 void splitVector1(const std::vector<Studentas>& studentai,
                   std::vector<Studentas>& vargsiukai,
                   std::vector<Studentas>& kietiakai);
@@ -86,7 +97,6 @@ void splitVector2(std::vector<Studentas>& studentai,
 void splitVector3(std::vector<Studentas>& studentai,
                   std::vector<Studentas>& vargsiukai);
 
-// LIST strategijos
 void splitList1(const std::list<Studentas>& studentai,
                 std::list<Studentas>& vargsiukai,
                 std::list<Studentas>& kietiakai);
@@ -97,7 +107,6 @@ void splitList2(std::list<Studentas>& studentai,
 void splitList3(std::list<Studentas>& studentai,
                 std::list<Studentas>& vargsiukai);
 
-// DEQUE strategijos
 void splitDeque1(const std::deque<Studentas>& studentai,
                  std::deque<Studentas>& vargsiukai,
                  std::deque<Studentas>& kietiakai);
