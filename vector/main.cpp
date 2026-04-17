@@ -12,7 +12,8 @@ int main() {
     std::cout << "6 - testuoti strategijas su list\n";
     std::cout << "7 - testuoti strategijas su deque\n";
     std::cout << "8 - senas bendras laiko testas\n";
-
+    std::cout << "9 - metodu testas\n";
+    
     char pasirinkimas;
     std::cin >> pasirinkimas;
     std::cin.ignore();
@@ -266,6 +267,10 @@ int main() {
         std::cin >> ndSize;
 
         testTime(testSize, ndSize);
+        return 0;
+    }
+        else if (pasirinkimas == '9') {
+        testClass();
         return 0;
     }
     else {
