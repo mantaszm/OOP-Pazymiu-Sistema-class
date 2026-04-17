@@ -14,6 +14,7 @@
 #include <random>
 #include <cstring>
 #include <sstream>
+#include <utility>
 
 class Studentas {
 private:
@@ -25,6 +26,7 @@ private:
     std::vector<short int> ND_;
 
 public:
+    // Konstruktoriai / destruktorius
     Studentas();
     ~Studentas();
 
@@ -35,7 +37,13 @@ public:
               uint16_t namuDarbaiMed100,
               const std::vector<short int>& ND = {});
 
-    // geteriai
+    // Rule of Five
+    Studentas(const Studentas& other);                  // Copy constructor
+    Studentas& operator=(const Studentas& other);       // Copy assignment
+    Studentas(Studentas&& other) noexcept;              // Move constructor
+    Studentas& operator=(Studentas&& other) noexcept;   // Move assignment
+
+    // Geteriai
     uint16_t getNamuDarbaiVid100() const;
     uint16_t getNamuDarbaiMed100() const;
     uint8_t getEgzaminas() const;
@@ -43,7 +51,7 @@ public:
     const std::string& getPavarde() const;
     const std::vector<short int>& getND() const;
 
-    // seteriai
+    // Seteriai
     void setNamuDarbaiVid100(uint16_t value);
     void setNamuDarbaiMed100(uint16_t value);
     void setEgzaminas(uint8_t value);
@@ -52,11 +60,12 @@ public:
     void setND(const std::vector<short int>& value);
     void addND(short int pazymys);
 
-    // skaiciavimai
+    // Skaičiavimai
     double galutinisVid() const;
     double galutinisMed() const;
 };
-
+std::istream& operator>>(std::istream& in, Studentas& s);
+std::ostream& operator<<(std::ostream& out, const Studentas& s);
 std::vector<Studentas> readFile(const std::string& filename, bool saveND = false);
 std::vector<Studentas> readTerminal();
 void generateFile(int kiekStud, int kiekND, std::string fileName);
@@ -64,6 +73,7 @@ void splitStudents(std::string dataFileName, std::string newFileName);
 void testFileCreation(int kiekStud, int kiekND, const std::string& fileName);
 void testDataProcessing(const std::string& fileName);
 void testTime(int testSize, int ndSize);
+void testClass();
 
 // VECTOR strategijos
 void splitVector1(const std::vector<Studentas>& studentai,
