@@ -1,12 +1,34 @@
 #include "funkcijos.h"
 
+// Zmogus
+Zmogus::Zmogus()
+    : vardas_(""), pavarde_("") {}
+
+Zmogus::Zmogus(const std::string& vardas, const std::string& pavarde)
+    : vardas_(vardas), pavarde_(pavarde) {}
+
+const std::string& Zmogus::getVardas() const {
+    return vardas_;
+}
+
+const std::string& Zmogus::getPavarde() const {
+    return pavarde_;
+}
+
+void Zmogus::setVardas(const std::string& value) {
+    vardas_ = value;
+}
+
+void Zmogus::setPavarde(const std::string& value) {
+    pavarde_ = value;
+}
+
 // Studentas: konstruktoriai
 Studentas::Studentas()
-    : namuDarbaiVid100_(0),
+    : Zmogus(),
+      namuDarbaiVid100_(0),
       namuDarbaiMed100_(0),
       egzaminas_(0),
-      vardas_(""),
-      pavarde_(""),
       ND_() {}
 
 Studentas::Studentas(const std::string& vardas,
@@ -15,41 +37,38 @@ Studentas::Studentas(const std::string& vardas,
                      uint16_t namuDarbaiVid100,
                      uint16_t namuDarbaiMed100,
                      const std::vector<short int>& ND)
-    : namuDarbaiVid100_(namuDarbaiVid100),
+    : Zmogus(vardas, pavarde),
+      namuDarbaiVid100_(namuDarbaiVid100),
       namuDarbaiMed100_(namuDarbaiMed100),
       egzaminas_(egzaminas),
-      vardas_(vardas),
-      pavarde_(pavarde),
       ND_(ND) {}
 
 Studentas::~Studentas() = default;
 
 Studentas::Studentas(const Studentas& other)
-    : namuDarbaiVid100_(other.namuDarbaiVid100_),
+    : Zmogus(other),
+      namuDarbaiVid100_(other.namuDarbaiVid100_),
       namuDarbaiMed100_(other.namuDarbaiMed100_),
       egzaminas_(other.egzaminas_),
-      vardas_(other.vardas_),
-      pavarde_(other.pavarde_),
       ND_(other.ND_) {}
 
 Studentas& Studentas::operator=(const Studentas& other) {
     if (this != &other) {
+        vardas_ = other.vardas_;
+        pavarde_ = other.pavarde_;
         namuDarbaiVid100_ = other.namuDarbaiVid100_;
         namuDarbaiMed100_ = other.namuDarbaiMed100_;
         egzaminas_ = other.egzaminas_;
-        vardas_ = other.vardas_;
-        pavarde_ = other.pavarde_;
         ND_ = other.ND_;
     }
     return *this;
 }
 
 Studentas::Studentas(Studentas&& other) noexcept
-    : namuDarbaiVid100_(other.namuDarbaiVid100_),
+    : Zmogus(std::move(other.vardas_), std::move(other.pavarde_)),
+      namuDarbaiVid100_(other.namuDarbaiVid100_),
       namuDarbaiMed100_(other.namuDarbaiMed100_),
       egzaminas_(other.egzaminas_),
-      vardas_(std::move(other.vardas_)),
-      pavarde_(std::move(other.pavarde_)),
       ND_(std::move(other.ND_)) {
     other.namuDarbaiVid100_ = 0;
     other.namuDarbaiMed100_ = 0;
@@ -58,11 +77,11 @@ Studentas::Studentas(Studentas&& other) noexcept
 
 Studentas& Studentas::operator=(Studentas&& other) noexcept {
     if (this != &other) {
+        vardas_ = std::move(other.vardas_);
+        pavarde_ = std::move(other.pavarde_);
         namuDarbaiVid100_ = other.namuDarbaiVid100_;
         namuDarbaiMed100_ = other.namuDarbaiMed100_;
         egzaminas_ = other.egzaminas_;
-        vardas_ = std::move(other.vardas_);
-        pavarde_ = std::move(other.pavarde_);
         ND_ = std::move(other.ND_);
 
         other.namuDarbaiVid100_ = 0;
@@ -72,7 +91,7 @@ Studentas& Studentas::operator=(Studentas&& other) noexcept {
     return *this;
 }
 
-// Geteriai
+// Studentas metodai
 uint16_t Studentas::getNamuDarbaiVid100() const {
     return namuDarbaiVid100_;
 }
@@ -85,19 +104,10 @@ uint8_t Studentas::getEgzaminas() const {
     return egzaminas_;
 }
 
-const std::string& Studentas::getVardas() const {
-    return vardas_;
-}
-
-const std::string& Studentas::getPavarde() const {
-    return pavarde_;
-}
-
 const std::vector<short int>& Studentas::getND() const {
     return ND_;
 }
 
-// Seteriai
 void Studentas::setNamuDarbaiVid100(uint16_t value) {
     namuDarbaiVid100_ = value;
 }
@@ -110,14 +120,6 @@ void Studentas::setEgzaminas(uint8_t value) {
     egzaminas_ = value;
 }
 
-void Studentas::setVardas(const std::string& value) {
-    vardas_ = value;
-}
-
-void Studentas::setPavarde(const std::string& value) {
-    pavarde_ = value;
-}
-
 void Studentas::setND(const std::vector<short int>& value) {
     ND_ = value;
 }
@@ -126,7 +128,6 @@ void Studentas::addND(short int pazymys) {
     ND_.push_back(pazymys);
 }
 
-// Skaiciavimo funkcijos
 double Studentas::galutinisVid() const {
     return (namuDarbaiVid100_ / 100.0) * 0.4 + egzaminas_ * 0.6;
 }
@@ -135,20 +136,26 @@ double Studentas::galutinisMed() const {
     return (namuDarbaiMed100_ / 100.0) * 0.4 + egzaminas_ * 0.6;
 }
 
+std::string Studentas::tipas() const {
+    return "Studentas";
+}
+
+// Perdengti operatoriai
 std::istream& operator>>(std::istream& in, Studentas& s) {
     std::string vardas, pavarde;
     in >> vardas >> pavarde;
+
+    if (!in) return in;
 
     s.setVardas(vardas);
     s.setPavarde(pavarde);
 
     std::vector<short int> nd;
-    int x;
+    int x = 0;
 
-    // skaitom visus likusius skaicius
     while (in >> x) {
         nd.push_back(static_cast<short int>(x));
-        if (in.peek() == '\n') break; // stop eilutes gale
+        if (in.peek() == '\n') break;
     }
 
     if (!nd.empty()) {
@@ -156,22 +163,27 @@ std::istream& operator>>(std::istream& in, Studentas& s) {
         nd.pop_back();
 
         int suma = 0;
-        for (auto v : nd) suma += v;
+        for (short int v : nd) {
+            suma += v;
+        }
 
         std::sort(nd.begin(), nd.end());
 
-        double med = 0;
-        int n = nd.size();
+        const std::size_t n = nd.size();
+        double med = 0.0;
 
         if (n > 0) {
-            if (n % 2 == 0)
-                med = (nd[n/2 - 1] + nd[n/2]) / 2.0;
-            else
-                med = nd[n/2];
+            if (n % 2 == 0) {
+                med = (nd[n / 2 - 1] + nd[n / 2]) / 2.0;
+            } else {
+                med = nd[n / 2];
+            }
         }
 
         s.setNamuDarbaiVid100(
-            n > 0 ? static_cast<uint16_t>((double)suma / n * 100.0) : 0
+            (n > 0)
+                ? static_cast<uint16_t>((static_cast<double>(suma) / static_cast<double>(n)) * 100.0)
+                : 0
         );
 
         s.setNamuDarbaiMed100(static_cast<uint16_t>(med * 100.0));
@@ -201,14 +213,17 @@ std::vector<Studentas> readFile(const std::string& filename, bool saveND) {
         return studentai;
     }
 
-    std::string header;
-    std::getline(in, header);
-
     std::string line;
+    std::getline(in, line); // header
+
     while (std::getline(in, line)) {
+        if (line.empty()) continue;
+
         std::stringstream ss(line);
         Studentas temp;
         ss >> temp;
+
+        if (temp.getVardas().empty() || temp.getPavarde().empty()) continue;
 
         if (!saveND) {
             temp.setND({});
