@@ -14,6 +14,41 @@
 | Rule of Five | Klasėje realizuoti kopijavimo, perkėlimo metodai ir destruktorius |
 | Įvesties/išvesties operatoriai | Perdengti `operator>>` ir `operator<<` darbui su `Studentas` klase |
 
+## Abstrakti klasė `Zmogus`
+
+`v1.5` versijoje į programą įvesta bazinė abstrakti klasė `Zmogus`, skirta aprašyti bendras žmogaus savybes.
+
+### Paskirtis
+
+Klasė `Zmogus` apibrėžia bendrus duomenis, kurie yra bendri visiems žmonėms:
+
+- vardas
+- pavardė
+
+Ši klasė naudojama kaip pagrindas išvestinėms klasėms (pvz., `Studentas`), kurios praplečia funkcionalumą.
+
+### Laukai
+
+| Laukas | Tipas | Aprašymas |
+|---|---|---|
+| `vardas_` | `std::string` | Žmogaus vardas |
+| `pavarde_` | `std::string` | Žmogaus pavardė |
+
+### Funkcijų aprašymas
+
+### Klasės `Zmogus` metodai
+
+| Funkcija | Tipas | Aprašymas |
+|---|---|---|
+| `Zmogus()` | Konstruktorius | Inicializuoja tuščias reikšmes |
+| `Zmogus(const std::string&, const std::string&)` | Konstruktorius | Inicializuoja vardą ir pavardę |
+| `~Zmogus()` | Virtualus destruktorius | Užtikrina korektišką paveldėtų objektų naikinimą |
+| `getVardas()` | Geteris | Grąžina vardą |
+| `getPavarde()` | Geteris | Grąžina pavardę |
+| `setVardas()` | Seteris | Nustato vardą |
+| `setPavarde()` | Seteris | Nustato pavardę |
+| `tipas()` | Pure virtual metodas | Padaro klasę abstrakčia |
+
 ## Klasė `Studentas`
 
 Klasėje saugomi šie duomenys:
