@@ -6,7 +6,7 @@
 
 | Funkcionalumas | Aprašymas |
 |---|---|
-| Studentų nuskaitymas | Duomenys gali būti įvedami ranka, generuojami automatiškai arba skaitomi iš failo |
+| Studentų nuskaitymas | Duomenys gali būti įvedami ranka, generuojami automatiškai arba skaitomi iš failo |  
 | Galutinio balo skaičiavimas | Skaičiuojamas pagal namų darbų vidurkį arba medianą |
 | Failų generavimas | Sugeneruojami testiniai failai su pasirinktu studentų ir ND kiekiu |
 | Studentų skirstymas | Studentai išskirstomi į „vargsiukus“ ir „kietiakus“ |
