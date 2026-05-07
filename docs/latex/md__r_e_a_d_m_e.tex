@@ -1,0 +1,243 @@
+\chapter{OOP Pazymiu Sistema }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{OOP Pazymiu Sistema@{OOP Pazymiu Sistema}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+Studentu pazymiu skaiciavimo sistema, realizuota C++ kalba.
+
+Programa leidzia:\+
+\begin{DoxyItemize}
+\item ivesti studentu duomenis terminale;
+\item nuskaityti studentus is failo;
+\item sugeneruoti studentu failus;
+\item skaiciuoti galutini bala pagal vidurki arba mediana;
+\item rusiuoti studentus;
+\item skirstyti studentus i vargsiukus ir kietiakus;
+\item testuoti klases metodus ir papildomus unit testus.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Naudojamos technologijos}{Naudojamos technologijos}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item C++20
+\item CMake
+\item Catch2 unit testams
+\item Doxygen dokumentacijai
+\item Graphviz Doxygen grafikams
+\item Mi\+KTeX arba Overleaf PDF dokumentacijai
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Projekto struktura}{Projekto struktura}}\label{md__r_e_a_d_m_e_autotoc_md2}
+\begin{DoxyVerb}.
+├── CMakeLists.txt
+├── Doxyfile
+├── README.md
+├── vector/
+│   ├── funkcijos.h
+│   ├── funkcijos.cpp
+│   ├── main.cpp
+│   └── tests.cpp
+└── tests/
+    └── unit_tests.cpp
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Release\textquotesingle{}ai}{Release\textquotesingle{}ai}}\label{md__r_e_a_d_m_e_autotoc_md3}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{v1.\+0}{v1.\+0}}\label{md__r_e_a_d_m_e_autotoc_md4}
+Pradine programos versija:\+
+\begin{DoxyItemize}
+\item studentu duomenu ivedimas;
+\item galutinio balo skaiciavimas;
+\item failu nuskaitymas;
+\item studentu isvedimas.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{v1.\+1}{v1.\+1}}\label{md__r_e_a_d_m_e_autotoc_md5}
+Pridetas studentu skirstymas i dvi grupes:\+
+\begin{DoxyItemize}
+\item vargsiukai;
+\item kietiakai.
+\end{DoxyItemize}
+
+Testuotos skirtingos konteineriu strategijos.\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{\texorpdfstring{v1.\+2}{v1.\+2}}\label{md__r_e_a_d_m_e_autotoc_md6}
+Pridetas darbas su skirtingais STL konteineriais:\+
+\begin{DoxyItemize}
+\item std::\+vector;
+\item std::\+list;
+\item std::\+deque.
+\end{DoxyItemize}
+
+Buvo lyginamos konteineriu veikimo strategijos ir skirstymo i grupes laikas.\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{v1.\+5}{v1.\+5}}\label{md__r_e_a_d_m_e_autotoc_md7}
+Galutine objektinio programavimo versija:\+
+\begin{DoxyItemize}
+\item sukurta abstrakti bazine klase \doxylink{class_zmogus}{Zmogus};
+\item sukurta isvestine klase \doxylink{class_studentas}{Studentas};
+\item realizuota Rule of Five:\+
+\begin{DoxyItemize}
+\item destruktorius;
+\item copy konstruktorius;
+\item copy assignment operatorius;
+\item move konstruktorius;
+\item move assignment operatorius;
+\end{DoxyItemize}
+\item prideti Catch2 unit testai;
+\item prideta Doxygen dokumentacija;
+\item paruostas CMake\+Lists.\+txt.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{Idiegimo instrukcija Windows aplinkoje}{Idiegimo instrukcija Windows aplinkoje}}\label{md__r_e_a_d_m_e_autotoc_md8}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsection{\texorpdfstring{Reikalinga programine iranga}{Reikalinga programine iranga}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Windows aplinkoje reikia tureti:\+
+\begin{DoxyItemize}
+\item C++20 palaikanti kompiliatoriu, pvz. MSVC arba Min\+GW;
+\item CMake;
+\item Git;
+\item Doxygen;
+\item Graphviz, jei norima matyti Doxygen klasiu grafus;
+\item Mi\+KTeX, jei norima PDF dokumentacija generuoti lokaliai.
+\end{DoxyItemize}
+
+Catch2 papildomai diegti nereikia, nes jis automatiskai atsiunciamas per CMake Fetch\+Content.\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{\texorpdfstring{CMake diegimas}{CMake diegimas}}\label{md__r_e_a_d_m_e_autotoc_md10}
+Atsisiuskite CMake Windows installer ir diegimo metu pasirinkite:\+ \begin{DoxyVerb}Add CMake to the system PATH for all users
+\end{DoxyVerb}
+
+
+arba:\+ \begin{DoxyVerb}Add CMake to the PATH for current user
+\end{DoxyVerb}
+
+
+Po diegimo uzdarykite terminala ir atidarykite ji is naujo.
+
+Patikrinimas:\+ \begin{DoxyVerb}cmake --version
+\end{DoxyVerb}
+
+
+Jeigu komanda neatpazistama, reikia i Windows PATH prideti:\+ \begin{DoxyVerb}C:\Program Files\CMake\bin
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\texorpdfstring{Doxygen ir Graphviz}{Doxygen ir Graphviz}}\label{md__r_e_a_d_m_e_autotoc_md11}
+Doxygen reikalingas HTML ir La\+TeX dokumentacijos generavimui.
+
+Graphviz reikalingas klasiu grafikams.
+
+Patikrinimas:\+ \begin{DoxyVerb}doxygen --version
+dot -V
+\end{DoxyVerb}
+
+
+Jeigu dot komanda neatpazistama, i Windows PATH reikia prideti Graphviz bin katalogą, pvz.:\+ \begin{DoxyVerb}C:\Program Files\Graphviz\bin
+\end{DoxyVerb}
+
+
+Jeigu Doxygen vis tiek neranda Graphviz, Doxyfile faile galima nurodyti:\+ \begin{DoxyVerb}DOT_PATH = "C:/Program Files/Graphviz/bin"
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysection{\texorpdfstring{Kompiliavimas su CMake Windows aplinkoje}{Kompiliavimas su CMake Windows aplinkoje}}\label{md__r_e_a_d_m_e_autotoc_md12}
+Is pagrindinio projekto katalogo paleiskite:\+ \begin{DoxyVerb}cmake -S . -B build
+cmake --build build
+\end{DoxyVerb}
+
+
+Programos paleidimas:\+ \begin{DoxyVerb}build\Debug\programa.exe
+\end{DoxyVerb}
+
+
+Jeigu naudojama Release konfiguracija:\+ \begin{DoxyVerb}cmake -S . -B build
+cmake --build build --config Release
+build\Release\programa.exe
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysection{\texorpdfstring{Unit testai}{Unit testai}}\label{md__r_e_a_d_m_e_autotoc_md13}
+Unit testams naudojamas Catch2 framework\textquotesingle{}as.
+
+Testai yra faile:\+ \begin{DoxyVerb}tests/unit_tests.cpp
+\end{DoxyVerb}
+
+
+Testai tikrina:\+
+\begin{DoxyItemize}
+\item abstrakcios bazines klases \doxylink{class_zmogus}{Zmogus} veikima;
+\item \doxylink{class_studentas}{Studentas} numatytaji konstruktoriu;
+\item \doxylink{class_studentas}{Studentas} parametrini konstruktoriu;
+\item Rule of Five metodus;
+\item galutinio balo skaiciavima;
+\item failo nuskaityma;
+\item studentu skirstyma naudojant std::\+vector.
+\end{DoxyItemize}
+
+Testu paleidimas Windows aplinkoje:\+ \begin{DoxyVerb}cmake -S . -B build
+cmake --build build
+ctest --test-dir build --output-on-failure
+\end{DoxyVerb}
+
+
+Jeigu naudojama Release konfiguracija:\+ \begin{DoxyVerb}ctest --test-dir build -C Release --output-on-failure
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysection{\texorpdfstring{Doxygen dokumentacija}{Doxygen dokumentacija}}\label{md__r_e_a_d_m_e_autotoc_md14}
+Dokumentacija generuojama naudojant Doxyfile.
+
+HTML ir La\+TeX dokumentacijos generavimas:\+ \begin{DoxyVerb}doxygen Doxyfile
+\end{DoxyVerb}
+
+
+Po generavimo turi atsirasti:\+ \begin{DoxyVerb}docs/html/
+docs/latex/
+\end{DoxyVerb}
+
+
+HTML dokumentacijos pradzios failas:\+ \begin{DoxyVerb}docs/html/index.html
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{\texorpdfstring{PDF dokumentacijos generavimas Windows aplinkoje}{PDF dokumentacijos generavimas Windows aplinkoje}}\label{md__r_e_a_d_m_e_autotoc_md15}
+Jeigu idiegtas Mi\+KTeX, PDF galima sugeneruoti taip:\+ \begin{DoxyVerb}cd docs\latex
+pdflatex refman.tex
+makeindex refman.idx
+pdflatex refman.tex
+pdflatex refman.tex
+\end{DoxyVerb}
+
+
+Po kompiliavimo turi atsirasti:\+ \begin{DoxyVerb}docs\latex\refman.pdf
+\end{DoxyVerb}
+
+
+Jeigu Mi\+KTeX arba kito La\+TeX kompiliatoriaus nera, galima naudoti Overleaf:\+
+\begin{DoxyEnumerate}
+\item Sugeneruokite dokumentacija su komanda doxygen Doxyfile.
+\item Ikelkite visa docs/\+latex katalogo turini i Overleaf.
+\item Overleaf projekte pagrindiniu failu pasirinkite refman.\+tex.
+\item Sugeneruokite PDF.
+\item Atsisiusta refman.\+pdf idekite atgal i projekto katalogą:\+
+
+docs\textbackslash{}latex\textbackslash{}refman.\+pdf
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysection{\texorpdfstring{Doxygen grafikai}{Doxygen grafikai}}\label{md__r_e_a_d_m_e_autotoc_md16}
+Doxygen klasiu grafams reikalingas Graphviz.
+
+Svarbiausi Doxyfile nustatymai grafikams:\+ \begin{DoxyVerb}HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+GRAPHICAL_HIERARCHY    = YES
+DIRECTORY_GRAPH        = YES
+\end{DoxyVerb}
+
+
+Jeigu collaboration graph nerodomas, pirmiausia patikrinkite:\+ \begin{DoxyVerb}dot -V
+\end{DoxyVerb}
+
+
+Taip pat istrinkite sena dokumentacija ir sugeneruokite is naujo:\+ \begin{DoxyVerb}rmdir /s /q docs
+doxygen Doxyfile
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysection{\texorpdfstring{Naudojimosi instrukcija}{Naudojimosi instrukcija}}\label{md__r_e_a_d_m_e_autotoc_md17}
+Paleidus programa vartotojui pateikiamas meniu. Jame galima pasirinkti:\+
+\begin{DoxyItemize}
+\item duomenu ivedima ranka;
+\item duomenu nuskaityma is failo;
+\item studentu failo generavima;
+\item rusiavima;
+\item skirstyma i grupes;
+\item konteineriu strategiju testavima;
+\item klases metodu testavima.
+\end{DoxyItemize}
+
+Bendras veikimo principas:\+
+\begin{DoxyEnumerate}
+\item Pasirenkamas duomenu gavimo budas.
+\item Studentu duomenys apdorojami.
+\item Apskaiciuojami galutiniai balai.
+\item Studentai gali buti surusiuoti arba suskirstyti.
+\item Rezultatai isvedami i terminala arba failus.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{\texorpdfstring{Rezultatu komentaras}{Rezultatu komentaras}}\label{md__r_e_a_d_m_e_autotoc_md18}
+Naudojant STL konteinerius pastebima, kad std::\+vector daznai yra efektyvus del nuoseklaus atminties isdestymo. Taciau salinimo operacijose std::\+list arba std::\+deque kai kuriais atvejais gali veikti patogiau, priklausomai nuo pasirinktos skirstymo strategijos.
+
+Unit testai leidzia greitai patikrinti, ar pakeitus koda nebuvo sugadintas pagrindinis funkcionalumas. Ypac svarbu testuoti Rule of Five metodus, nes jie susije su objektu kopijavimu, perkelimu ir resursu valdymu. 

@@ -1,0 +1,155 @@
+\doxysection{unit\+\_\+tests.\+cpp}
+\hypertarget{unit__tests_8cpp_source}{}\label{unit__tests_8cpp_source}\index{unit\_tests.cpp@{unit\_tests.cpp}}
+\doxymbox{\hyperlink{unit__tests_8cpp}{Eiti į šio failo dokumentaciją.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{funkcijos_8h}{funkcijos.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <catch2/catch\_test\_macros.hpp>}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00010}00010\ \textcolor{keyword}{namespace\ }\{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00011}00011\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ EPS\ =\ 1e-\/9;}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00012}00012\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00014}\doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{00014}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Zmogus\ yra\ abstrakti\ bazine\ klase"{}},\ \textcolor{stringliteral}{"{}[zmogus][oop]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_abstract\_v<Zmogus>);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of\_v<Zmogus,\ Studentas>);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ s(\textcolor{stringliteral}{"{}Jonas"{}},\ \textcolor{stringliteral}{"{}Jonaitis"{}},\ 8,\ 900,\ 850,\ \{8,\ 9,\ 10\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00019}00019\ \ \ \ \ \doxymbox{\hyperlink{class_zmogus}{Zmogus}}*\ z\ =\ \&s;}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00021}00021\ \ \ \ \ REQUIRE(z-\/>getVardas()\ ==\ \textcolor{stringliteral}{"{}Jonas"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00022}00022\ \ \ \ \ REQUIRE(z-\/>getPavarde()\ ==\ \textcolor{stringliteral}{"{}Jonaitis"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00023}00023\ \ \ \ \ REQUIRE(z-\/>tipas()\ ==\ \textcolor{stringliteral}{"{}Studentas"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00026}\doxymbox{\hyperlink{unit__tests_8cpp_a0ae8017178fddf6728cd8f9442ee5094}{00026}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Numatytasis\ konstruktorius\ sukuria\ tuscia\ studenta"{}},\ \textcolor{stringliteral}{"{}[studentas][constructor]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00027}00027\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ s;}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00029}00029\ \ \ \ \ REQUIRE(s.\doxymbox{\hyperlink{class_zmogus_acf4a7481cb123bbb30cb82dd50102ebd}{getVardas}}().empty());}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00030}00030\ \ \ \ \ REQUIRE(s.\doxymbox{\hyperlink{class_zmogus_af6fa0216be160cd70589a193709a0b36}{getPavarde}}().empty());}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00031}00031\ \ \ \ \ REQUIRE(s.\doxymbox{\hyperlink{class_studentas_aa4aa8895fbc9d811df52af50cff59e1c}{getEgzaminas}}()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00032}00032\ \ \ \ \ REQUIRE(s.\doxymbox{\hyperlink{class_studentas_a30272b1afe93c830542562fbb38fc40d}{getNamuDarbaiVid100}}()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00033}00033\ \ \ \ \ REQUIRE(s.\doxymbox{\hyperlink{class_studentas_a605224865d531e2d352f92bef6d67116}{getNamuDarbaiMed100}}()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00034}00034\ \ \ \ \ REQUIRE(s.\doxymbox{\hyperlink{class_studentas_ac72ceec61c3af92e4ed0745304a078f1}{getND}}().empty());}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00037}\doxymbox{\hyperlink{unit__tests_8cpp_a906f7e9e180fa6095e7d4e9ee80c5ef3}{00037}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Parametrinis\ konstruktorius\ uzpildo\ visus\ laukus"{}},\ \textcolor{stringliteral}{"{}[studentas][constructor]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00038}00038\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ s(\textcolor{stringliteral}{"{}Ona"{}},\ \textcolor{stringliteral}{"{}Onaite"{}},\ 9,\ 875,\ 900,\ \{8,\ 9,\ 10\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00040}00040\ \ \ \ \ REQUIRE(s.getVardas()\ ==\ \textcolor{stringliteral}{"{}Ona"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00041}00041\ \ \ \ \ REQUIRE(s.getPavarde()\ ==\ \textcolor{stringliteral}{"{}Onaite"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00042}00042\ \ \ \ \ REQUIRE(s.getEgzaminas()\ ==\ 9);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00043}00043\ \ \ \ \ REQUIRE(s.getNamuDarbaiVid100()\ ==\ 875);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00044}00044\ \ \ \ \ REQUIRE(s.getNamuDarbaiMed100()\ ==\ 900);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00045}00045\ \ \ \ \ REQUIRE((s.getND()\ ==\ std::vector<short\ int>\{8,\ 9,\ 10\}));}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00048}\doxymbox{\hyperlink{unit__tests_8cpp_a1a7c421f46a2defea08ee2bfc5fc4ba1}{00048}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Rule\ of\ Five:\ copy\ konstruktorius\ atlieka\ gilia\ kopija"{}},\ \textcolor{stringliteral}{"{}[studentas][rule-\/of-\/five]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00049}00049\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ original(\textcolor{stringliteral}{"{}Petras"{}},\ \textcolor{stringliteral}{"{}Petraitis"{}},\ 7,\ 650,\ 700,\ \{6,\ 7,\ 8\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00050}00050\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ kopija(original);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00052}00052\ \ \ \ \ original.setVardas(\textcolor{stringliteral}{"{}Pakeistas"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00053}00053\ \ \ \ \ original.setND(\{1,\ 2,\ 3\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00055}00055\ \ \ \ \ REQUIRE(kopija.getVardas()\ ==\ \textcolor{stringliteral}{"{}Petras"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00056}00056\ \ \ \ \ REQUIRE(kopija.getPavarde()\ ==\ \textcolor{stringliteral}{"{}Petraitis"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00057}00057\ \ \ \ \ REQUIRE(kopija.getEgzaminas()\ ==\ 7);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00058}00058\ \ \ \ \ REQUIRE(kopija.getNamuDarbaiVid100()\ ==\ 650);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00059}00059\ \ \ \ \ REQUIRE(kopija.getNamuDarbaiMed100()\ ==\ 700);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00060}00060\ \ \ \ \ REQUIRE((kopija.getND()\ ==\ std::vector<short\ int>\{6,\ 7,\ 8\}));}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00063}\doxymbox{\hyperlink{unit__tests_8cpp_ad475fce3a10020ec7faf9f07382a5160}{00063}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Rule\ of\ Five:\ copy\ assignment\ teisingai\ priskiria\ reiksmes"{}},\ \textcolor{stringliteral}{"{}[studentas][rule-\/of-\/five]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00064}00064\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ a(\textcolor{stringliteral}{"{}A"{}},\ \textcolor{stringliteral}{"{}AA"{}},\ 10,\ 950,\ 900,\ \{9,\ 10\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00065}00065\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ b(\textcolor{stringliteral}{"{}B"{}},\ \textcolor{stringliteral}{"{}BB"{}},\ 4,\ 400,\ 400,\ \{4\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00067}00067\ \ \ \ \ b\ =\ a;}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00068}00068\ \ \ \ \ a.\doxymbox{\hyperlink{class_zmogus_a5bb87d14f5d85da63d2d33f6d3171715}{setPavarde}}(\textcolor{stringliteral}{"{}Pakeista"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00069}00069\ \ \ \ \ a.addND(1);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00071}00071\ \ \ \ \ REQUIRE(b.getVardas()\ ==\ \textcolor{stringliteral}{"{}A"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00072}00072\ \ \ \ \ REQUIRE(b.getPavarde()\ ==\ \textcolor{stringliteral}{"{}AA"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00073}00073\ \ \ \ \ REQUIRE(b.getEgzaminas()\ ==\ 10);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00074}00074\ \ \ \ \ REQUIRE((b.getND()\ ==\ std::vector<short\ int>\{9,\ 10\}));}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00077}\doxymbox{\hyperlink{unit__tests_8cpp_ad6960306d6c9fb95d2be3545aa512c2a}{00077}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Rule\ of\ Five:\ move\ konstruktorius\ perkelia\ duomenis"{}},\ \textcolor{stringliteral}{"{}[studentas][rule-\/of-\/five]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00078}00078\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ a(\textcolor{stringliteral}{"{}Ieva"{}},\ \textcolor{stringliteral}{"{}Ievaite"{}},\ 8,\ 800,\ 850,\ \{8,\ 8,\ 9\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00079}00079\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ b(std::move(a));}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00081}00081\ \ \ \ \ REQUIRE(b.getVardas()\ ==\ \textcolor{stringliteral}{"{}Ieva"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00082}00082\ \ \ \ \ REQUIRE(b.getPavarde()\ ==\ \textcolor{stringliteral}{"{}Ievaite"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00083}00083\ \ \ \ \ REQUIRE(b.getEgzaminas()\ ==\ 8);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00084}00084\ \ \ \ \ REQUIRE(b.getNamuDarbaiVid100()\ ==\ 800);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00085}00085\ \ \ \ \ REQUIRE(b.getNamuDarbaiMed100()\ ==\ 850);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00086}00086\ \ \ \ \ REQUIRE((b.getND()\ ==\ std::vector<short\ int>\{8,\ 8,\ 9\}));}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00087}00087\ \ \ \ \ REQUIRE(a.getEgzaminas()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00088}00088\ \ \ \ \ REQUIRE(a.getNamuDarbaiVid100()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00089}00089\ \ \ \ \ REQUIRE(a.getNamuDarbaiMed100()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00092}\doxymbox{\hyperlink{unit__tests_8cpp_a80079583d151be91d0f804901a2f1a14}{00092}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Rule\ of\ Five:\ move\ assignment\ perkelia\ duomenis"{}},\ \textcolor{stringliteral}{"{}[studentas][rule-\/of-\/five]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00093}00093\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ a(\textcolor{stringliteral}{"{}Lukas"{}},\ \textcolor{stringliteral}{"{}Lukaitis"{}},\ 9,\ 900,\ 900,\ \{9,\ 9,\ 9\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00094}00094\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ b;}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00096}00096\ \ \ \ \ b\ =\ std::move(a);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00098}00098\ \ \ \ \ REQUIRE(b.getVardas()\ ==\ \textcolor{stringliteral}{"{}Lukas"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00099}00099\ \ \ \ \ REQUIRE(b.getPavarde()\ ==\ \textcolor{stringliteral}{"{}Lukaitis"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00100}00100\ \ \ \ \ REQUIRE(b.getEgzaminas()\ ==\ 9);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00101}00101\ \ \ \ \ REQUIRE((b.getND()\ ==\ std::vector<short\ int>\{9,\ 9,\ 9\}));}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00102}00102\ \ \ \ \ REQUIRE(a.getEgzaminas()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00103}00103\ \ \ \ \ REQUIRE(a.getNamuDarbaiVid100()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00104}00104\ \ \ \ \ REQUIRE(a.getNamuDarbaiMed100()\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00107}\doxymbox{\hyperlink{unit__tests_8cpp_a46129989a8ff9eb732d41fad2f6d7b7b}{00107}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Rule\ of\ Five:\ destruktorius\ leidzia\ saugiai\ naikinti\ per\ bazine\ rodykle"{}},\ \textcolor{stringliteral}{"{}[studentas][rule-\/of-\/five]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00108}00108\ \ \ \ \ \doxymbox{\hyperlink{class_zmogus}{Zmogus}}*\ z\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_studentas}{Studentas}}(\textcolor{stringliteral}{"{}Ruta"{}},\ \textcolor{stringliteral}{"{}Rutaite"{}},\ 10,\ 1000,\ 1000,\ \{10\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00109}00109\ \ \ \ \ REQUIRE(z-\/>\doxymbox{\hyperlink{class_zmogus_ac0cbaff86ba113aa32e72c13fc208818}{tipas}}()\ ==\ \textcolor{stringliteral}{"{}Studentas"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{delete}\ z;}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00113}\doxymbox{\hyperlink{unit__tests_8cpp_a0e973dab494044b7e0501bf4ed28756c}{00113}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Galutinio\ balo\ skaiciavimas\ pagal\ vidurki\ ir\ mediana"{}},\ \textcolor{stringliteral}{"{}[studentas][calculation]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00114}00114\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ s(\textcolor{stringliteral}{"{}Mantas"{}},\ \textcolor{stringliteral}{"{}Mantaitis"{}},\ 8,\ 750,\ 850,\ \{7,\ 8,\ 9\});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00116}00116\ \ \ \ \ REQUIRE(std::abs(s.galutinisVid()\ -\/\ 7.8)\ <\ EPS);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00117}00117\ \ \ \ \ REQUIRE(std::abs(s.galutinisMed()\ -\/\ 8.2)\ <\ EPS);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00120}\doxymbox{\hyperlink{unit__tests_8cpp_ac44625f7446d710181052db76312e231}{00120}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Failo\ nuskaitymas\ issaugo\ ND,\ kai\ saveND=true"{}},\ \textcolor{stringliteral}{"{}[file]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ fileName\ =\ \textcolor{stringliteral}{"{}test\_input.txt"{}};}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00122}00122\ \ \ \ \ std::ofstream\ out(fileName);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00123}00123\ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}Vardas\ Pavarde\ ND1\ ND2\ ND3\ Egz.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00124}00124\ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}Tomas\ Tomaitis\ 5\ 6\ 7\ 8\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00125}00125\ \ \ \ \ out.close();}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ studentai\ =\ \doxymbox{\hyperlink{funkcijos_8h_ae6a490b50d02b4fb543c816cc91123ee}{readFile}}(fileName,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00129}00129\ \ \ \ \ REQUIRE(studentai.size()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00130}00130\ \ \ \ \ REQUIRE(studentai[0].getVardas()\ ==\ \textcolor{stringliteral}{"{}Tomas"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00131}00131\ \ \ \ \ REQUIRE(studentai[0].getPavarde()\ ==\ \textcolor{stringliteral}{"{}Tomaitis"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00132}00132\ \ \ \ \ REQUIRE(studentai[0].getEgzaminas()\ ==\ 8);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00133}00133\ \ \ \ \ REQUIRE((studentai[0].getND()\ ==\ std::vector<short\ int>\{5,\ 6,\ 7\}));}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00134}00134\ \}}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00136}\doxymbox{\hyperlink{unit__tests_8cpp_a9af2b644bef9933f11f80c325bb456c7}{00136}}\ \doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\_CASE}}(\textcolor{stringliteral}{"{}Vector\ skirstymo\ strategija\ atskiria\ vargsiukus"{}},\ \textcolor{stringliteral}{"{}[split][vector]"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00137}00137\ \ \ \ \ std::vector<Studentas>\ studentai\ =\ \{}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}(\textcolor{stringliteral}{"{}A"{}},\ \textcolor{stringliteral}{"{}A"{}},\ 4,\ 400,\ 400,\ \{4\}),}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}(\textcolor{stringliteral}{"{}B"{}},\ \textcolor{stringliteral}{"{}B"{}},\ 10,\ 1000,\ 1000,\ \{10\}),}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}(\textcolor{stringliteral}{"{}C"{}},\ \textcolor{stringliteral}{"{}C"{}},\ 5,\ 500,\ 500,\ \{5\})}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00141}00141\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00142}00142\ \ \ \ \ std::vector<Studentas>\ vargsiukai;}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00144}00144\ \ \ \ \ \doxymbox{\hyperlink{funkcijos_8h_a8223847e6bae579c14677c6a501403b2}{splitVector3}}(studentai,\ vargsiukai);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00146}00146\ \ \ \ \ REQUIRE(vargsiukai.size()\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00147}00147\ \ \ \ \ REQUIRE(vargsiukai[0].getVardas()\ ==\ \textcolor{stringliteral}{"{}A"{}});}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00148}00148\ \ \ \ \ REQUIRE(studentai.size()\ ==\ 2);}
+\DoxyCodeLine{\Hypertarget{unit__tests_8cpp_source_l00149}00149\ \}}
+
+\end{DoxyCode}

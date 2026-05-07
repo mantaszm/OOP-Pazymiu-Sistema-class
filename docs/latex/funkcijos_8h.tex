@@ -1,0 +1,368 @@
+\doxysection{funkcijos.\+h Failo Nuoroda}
+\hypertarget{funkcijos_8h}{}\label{funkcijos_8h}\index{funkcijos.h@{funkcijos.h}}
+
+
+Studentu pazymiu sistemos klasiu ir funkciju deklaracijos.  
+
+
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$list$>$}\newline
+{\ttfamily \+\#include $<$deque$>$}\newline
+{\ttfamily \+\#include $<$chrono$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$random$>$}\newline
+{\ttfamily \+\#include $<$cstring$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$utility$>$}\newline
+Įtraukimo priklausomybių diagrama funkcijos.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{funkcijos_8h__incl}
+\end{center}
+\end{figure}
+Šis grafas rodo, kuris failas tiesiogiai ar netiesiogiai įtraukia šį failą:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{funkcijos_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Klasės}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_zmogus}{Zmogus}}
+\begin{DoxyCompactList}\small\item\em Abstrakti bazine klase bendriems zmogaus duomenims saugoti. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_studentas}{Studentas}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_studentas}{Studentas} su namu darbu, egzamino ir galutinio balo duomenimis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funkcijos}
+\begin{DoxyCompactItemize}
+\item 
+std::\+istream \& \doxymbox{\hyperlink{funkcijos_8h_af8f35a3ee68335b1adb35ac85edf1c03}{operator$>$$>$}} (std::\+istream \&in, \doxymbox{\hyperlink{class_studentas}{Studentas}} \&s)
+\begin{DoxyCompactList}\small\item\em Nuskaito viena studenta is srauto. \end{DoxyCompactList}\item 
+std::\+ostream \& \doxymbox{\hyperlink{funkcijos_8h_a8ef0139ac1bd9eb75f994ab35393cdad}{operator$<$$<$}} (std::\+ostream \&out, const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&s)
+\begin{DoxyCompactList}\small\item\em Isveda viena studenta i srauta. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \doxymbox{\hyperlink{funkcijos_8h_ae6a490b50d02b4fb543c816cc91123ee}{read\+File}} (const std::\+string \&filename, bool save\+ND=false)
+\begin{DoxyCompactList}\small\item\em Nuskaito studentus is failo. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \doxymbox{\hyperlink{funkcijos_8h_aec28ac6e8d81693ff5350c1991b06621}{read\+Terminal}} ()
+\begin{DoxyCompactList}\small\item\em Nuskaito studentus is terminalo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_acdb7571ae3fb280501d940c1b17d0db6}{generate\+File}} (int kiek\+Stud, int kiek\+ND, std::\+string file\+Name)
+\begin{DoxyCompactList}\small\item\em Sugeneruoja testiniu studentu faila. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_aab290c0f2b38a35e33cdb767eed08dbb}{split\+Students}} (std::\+string data\+File\+Name, std::\+string new\+File\+Name)
+\begin{DoxyCompactList}\small\item\em Padalina studentus i vargsiukus ir kietiakus pagal failo duomenis. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a4fc133f226056dfc8135a216a6b28b4f}{test\+File\+Creation}} (int kiek\+Stud, int kiek\+ND, const std::\+string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Matuoja failo generavimo laika. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_ab0975ac631d724cf67493822f5ea19b8}{test\+Data\+Processing}} (const std::\+string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Matuoja duomenu nuskaitymo ir skirstymo laika. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_afdfc46027d89a21f9690c202b01eb6ac}{test\+Time}} (int test\+Size, int nd\+Size)
+\begin{DoxyCompactList}\small\item\em Paleidzia laiko testus. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a88b00615c6bdeeb01ec34765779f6e30}{test\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Paleidzia senesnius klases testus, pasiekiamus per programos meniu. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a6d79f147f7580538613df992b7e6a3ff}{split\+Vector1}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai, std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&kietiakai)
+\begin{DoxyCompactList}\small\item\em Vector skirstymas kuriant du naujus konteinerius. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a14661078e4d639896eab51b679594177}{split\+Vector2}} (std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai)
+\begin{DoxyCompactList}\small\item\em Vector skirstymas paliekant kietiakus pradiniame konteineryje. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a8223847e6bae579c14677c6a501403b2}{split\+Vector3}} (std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai)
+\begin{DoxyCompactList}\small\item\em Vector skirstymas naudojant std::\+partition. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a11967b3c169304f4baad81181d16e405}{split\+List1}} (const std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&kietiakai)
+\begin{DoxyCompactList}\small\item\em List skirstymas kuriant du naujus konteinerius. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a3523f0edf9bcecac67b7426802ff1905}{split\+List2}} (std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai)
+\begin{DoxyCompactList}\small\item\em List skirstymas naudojant erase. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a5812dea8e1be5a54fcb1b6accf6089d6}{split\+List3}} (std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai)
+\begin{DoxyCompactList}\small\item\em List skirstymas naudojant splice. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_a3b250633a6bcbd2dcc22917182db2e5e}{split\+Deque1}} (const std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai, std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&kietiakai)
+\begin{DoxyCompactList}\small\item\em Deque skirstymas kuriant du naujus konteinerius. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_aaf5cd33cbdbd7c910b9b99e242bea89f}{split\+Deque2}} (std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai)
+\begin{DoxyCompactList}\small\item\em Deque skirstymas naudojant erase. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8h_ae7654fd3dc1a9159e04c8d1da9b37b9b}{split\+Deque3}} (std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&vargsiukai)
+\begin{DoxyCompactList}\small\item\em Deque skirstymas naudojant std::\+partition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Smulkus aprašymas}
+Studentu pazymiu sistemos klasiu ir funkciju deklaracijos. 
+
+Faile deklaruojama abstrakti klase \doxylink{class_zmogus}{Zmogus}, is jos paveldima klase \doxylink{class_studentas}{Studentas}, ivesties/\+isvesties operatoriai, failu apdorojimo funkcijos ir konteineriu skirstymo strategijos. 
+
+Apibrėžimas faile \doxymbox{\hyperlink{funkcijos_8h_source}{funkcijos.\+h}}.
+
+
+
+\label{funkcijos_8h_doc-func-members}
+\Hypertarget{funkcijos_8h_doc-func-members}
+\doxysubsection{Funkcijos Dokumentacija}
+\Hypertarget{funkcijos_8h_acdb7571ae3fb280501d940c1b17d0db6}\index{funkcijos.h@{funkcijos.h}!generateFile@{generateFile}}
+\index{generateFile@{generateFile}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{generateFile()}{generateFile()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_acdb7571ae3fb280501d940c1b17d0db6} 
+void generate\+File (\begin{DoxyParamCaption}\item[{int}]{kiek\+Stud}{, }\item[{int}]{kiek\+ND}{, }\item[{std::\+string}]{file\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Sugeneruoja testiniu studentu faila. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00388}{388}}.
+
+\Hypertarget{funkcijos_8h_a8ef0139ac1bd9eb75f994ab35393cdad}\index{funkcijos.h@{funkcijos.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a8ef0139ac1bd9eb75f994ab35393cdad} 
+std::\+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{out}{, }\item[{const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Isveda viena studenta i srauta. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00196}{196}}.
+
+\Hypertarget{funkcijos_8h_af8f35a3ee68335b1adb35ac85edf1c03}\index{funkcijos.h@{funkcijos.h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_af8f35a3ee68335b1adb35ac85edf1c03} 
+std::\+istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std::\+istream \&}]{in}{, }\item[{\doxymbox{\hyperlink{class_studentas}{Studentas}} \&}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Nuskaito viena studenta is srauto. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00144}{144}}.
+
+\Hypertarget{funkcijos_8h_ae6a490b50d02b4fb543c816cc91123ee}\index{funkcijos.h@{funkcijos.h}!readFile@{readFile}}
+\index{readFile@{readFile}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_ae6a490b50d02b4fb543c816cc91123ee} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ read\+File (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{, }\item[{bool}]{save\+ND}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Nuskaito studentus is failo. 
+
+
+\begin{DoxyParams}{Parametrai}
+{\em filename} & Failo pavadinimas.\\
+\hline
+{\em save\+ND} & Ar saugoti ND pazymius objekte. \\
+\hline
+\end{DoxyParams}
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00207}{207}}.
+
+\Hypertarget{funkcijos_8h_aec28ac6e8d81693ff5350c1991b06621}\index{funkcijos.h@{funkcijos.h}!readTerminal@{readTerminal}}
+\index{readTerminal@{readTerminal}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{readTerminal()}{readTerminal()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_aec28ac6e8d81693ff5350c1991b06621} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ read\+Terminal (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Nuskaito studentus is terminalo. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00239}{239}}.
+
+\Hypertarget{funkcijos_8h_a3b250633a6bcbd2dcc22917182db2e5e}\index{funkcijos.h@{funkcijos.h}!splitDeque1@{splitDeque1}}
+\index{splitDeque1@{splitDeque1}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitDeque1()}{splitDeque1()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a3b250633a6bcbd2dcc22917182db2e5e} 
+void split\+Deque1 (\begin{DoxyParamCaption}\item[{const std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{, }\item[{std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{kietiakai}{}\end{DoxyParamCaption})}
+
+
+
+Deque skirstymas kuriant du naujus konteinerius. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00582}{582}}.
+
+\Hypertarget{funkcijos_8h_aaf5cd33cbdbd7c910b9b99e242bea89f}\index{funkcijos.h@{funkcijos.h}!splitDeque2@{splitDeque2}}
+\index{splitDeque2@{splitDeque2}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitDeque2()}{splitDeque2()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_aaf5cd33cbdbd7c910b9b99e242bea89f} 
+void split\+Deque2 (\begin{DoxyParamCaption}\item[{std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{}\end{DoxyParamCaption})}
+
+
+
+Deque skirstymas naudojant erase. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00594}{594}}.
+
+\Hypertarget{funkcijos_8h_ae7654fd3dc1a9159e04c8d1da9b37b9b}\index{funkcijos.h@{funkcijos.h}!splitDeque3@{splitDeque3}}
+\index{splitDeque3@{splitDeque3}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitDeque3()}{splitDeque3()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_ae7654fd3dc1a9159e04c8d1da9b37b9b} 
+void split\+Deque3 (\begin{DoxyParamCaption}\item[{std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{}\end{DoxyParamCaption})}
+
+
+
+Deque skirstymas naudojant std::\+partition. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00606}{606}}.
+
+\Hypertarget{funkcijos_8h_a11967b3c169304f4baad81181d16e405}\index{funkcijos.h@{funkcijos.h}!splitList1@{splitList1}}
+\index{splitList1@{splitList1}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitList1()}{splitList1()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a11967b3c169304f4baad81181d16e405} 
+void split\+List1 (\begin{DoxyParamCaption}\item[{const std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{kietiakai}{}\end{DoxyParamCaption})}
+
+
+
+List skirstymas kuriant du naujus konteinerius. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00545}{545}}.
+
+\Hypertarget{funkcijos_8h_a3523f0edf9bcecac67b7426802ff1905}\index{funkcijos.h@{funkcijos.h}!splitList2@{splitList2}}
+\index{splitList2@{splitList2}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitList2()}{splitList2()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a3523f0edf9bcecac67b7426802ff1905} 
+void split\+List2 (\begin{DoxyParamCaption}\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{}\end{DoxyParamCaption})}
+
+
+
+List skirstymas naudojant erase. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00557}{557}}.
+
+\Hypertarget{funkcijos_8h_a5812dea8e1be5a54fcb1b6accf6089d6}\index{funkcijos.h@{funkcijos.h}!splitList3@{splitList3}}
+\index{splitList3@{splitList3}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitList3()}{splitList3()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a5812dea8e1be5a54fcb1b6accf6089d6} 
+void split\+List3 (\begin{DoxyParamCaption}\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{}\end{DoxyParamCaption})}
+
+
+
+List skirstymas naudojant splice. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00569}{569}}.
+
+\Hypertarget{funkcijos_8h_aab290c0f2b38a35e33cdb767eed08dbb}\index{funkcijos.h@{funkcijos.h}!splitStudents@{splitStudents}}
+\index{splitStudents@{splitStudents}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitStudents()}{splitStudents()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_aab290c0f2b38a35e33cdb767eed08dbb} 
+void split\+Students (\begin{DoxyParamCaption}\item[{std::\+string}]{data\+File\+Name}{, }\item[{std::\+string}]{new\+File\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Padalina studentus i vargsiukus ir kietiakus pagal failo duomenis. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00421}{421}}.
+
+\Hypertarget{funkcijos_8h_a6d79f147f7580538613df992b7e6a3ff}\index{funkcijos.h@{funkcijos.h}!splitVector1@{splitVector1}}
+\index{splitVector1@{splitVector1}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitVector1()}{splitVector1()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a6d79f147f7580538613df992b7e6a3ff} 
+void split\+Vector1 (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{kietiakai}{}\end{DoxyParamCaption})}
+
+
+
+Vector skirstymas kuriant du naujus konteinerius. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00506}{506}}.
+
+\Hypertarget{funkcijos_8h_a14661078e4d639896eab51b679594177}\index{funkcijos.h@{funkcijos.h}!splitVector2@{splitVector2}}
+\index{splitVector2@{splitVector2}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitVector2()}{splitVector2()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a14661078e4d639896eab51b679594177} 
+void split\+Vector2 (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{}\end{DoxyParamCaption})}
+
+
+
+Vector skirstymas paliekant kietiakus pradiniame konteineryje. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00518}{518}}.
+
+\Hypertarget{funkcijos_8h_a8223847e6bae579c14677c6a501403b2}\index{funkcijos.h@{funkcijos.h}!splitVector3@{splitVector3}}
+\index{splitVector3@{splitVector3}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{splitVector3()}{splitVector3()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a8223847e6bae579c14677c6a501403b2} 
+void split\+Vector3 (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{vargsiukai}{}\end{DoxyParamCaption})}
+
+
+
+Vector skirstymas naudojant std::\+partition. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00530}{530}}.
+
+\Hypertarget{funkcijos_8h_a88b00615c6bdeeb01ec34765779f6e30}\index{funkcijos.h@{funkcijos.h}!testClass@{testClass}}
+\index{testClass@{testClass}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{testClass()}{testClass()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a88b00615c6bdeeb01ec34765779f6e30} 
+void test\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Paleidzia senesnius klases testus, pasiekiamus per programos meniu. 
+
+\Hypertarget{funkcijos_8h_ab0975ac631d724cf67493822f5ea19b8}\index{funkcijos.h@{funkcijos.h}!testDataProcessing@{testDataProcessing}}
+\index{testDataProcessing@{testDataProcessing}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{testDataProcessing()}{testDataProcessing()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_ab0975ac631d724cf67493822f5ea19b8} 
+void test\+Data\+Processing (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{file\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Matuoja duomenu nuskaitymo ir skirstymo laika. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00476}{476}}.
+
+\Hypertarget{funkcijos_8h_a4fc133f226056dfc8135a216a6b28b4f}\index{funkcijos.h@{funkcijos.h}!testFileCreation@{testFileCreation}}
+\index{testFileCreation@{testFileCreation}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{testFileCreation()}{testFileCreation()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_a4fc133f226056dfc8135a216a6b28b4f} 
+void test\+File\+Creation (\begin{DoxyParamCaption}\item[{int}]{kiek\+Stud}{, }\item[{int}]{kiek\+ND}{, }\item[{const std::\+string \&}]{file\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Matuoja failo generavimo laika. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00467}{467}}.
+
+\Hypertarget{funkcijos_8h_afdfc46027d89a21f9690c202b01eb6ac}\index{funkcijos.h@{funkcijos.h}!testTime@{testTime}}
+\index{testTime@{testTime}!funkcijos.h@{funkcijos.h}}
+\doxysubsubsection{\texorpdfstring{testTime()}{testTime()}}
+{\footnotesize\ttfamily \label{funkcijos_8h_afdfc46027d89a21f9690c202b01eb6ac} 
+void test\+Time (\begin{DoxyParamCaption}\item[{int}]{test\+Size}{, }\item[{int}]{nd\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Paleidzia laiko testus. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00499}{499}}.
+

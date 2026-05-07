@@ -1,0 +1,237 @@
+\doxysection{Zmogus Klasė}
+\hypertarget{class_zmogus}{}\label{class_zmogus}\index{Zmogus@{Zmogus}}
+
+
+Abstrakti bazine klase bendriems zmogaus duomenims saugoti.  
+
+
+
+
+{\ttfamily \+\#include $<$funkcijos.\+h$>$}
+
+
+
+Paveldimumo diagrama Zmogus:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{class_zmogus__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Bendradarbiavimo diagrama Zmogus:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_zmogus__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Vieši Metodai}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_zmogus_aa7a8ba4d3c4778f9b35d59eef3e72574}{Zmogus}} ()
+\begin{DoxyCompactList}\small\item\em Sukuria tuscia zmogu. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_zmogus_ae6bfb71e4c8fddf15f3a19b4bcd6fd26}{Zmogus}} (const std::\+string \&vardas, const std::\+string \&pavarde)
+\begin{DoxyCompactList}\small\item\em Sukuria zmogu su vardu ir pavarde. \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{class_zmogus_a6183937c7da8254430a6c99cfa89fe69}{\texorpdfstring{$\sim$}{\string~}\+Zmogus}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtualus destruktorius saugiam paveldetu objektu naikinimui. \end{DoxyCompactList}\item 
+const std::\+string \& \doxymbox{\hyperlink{class_zmogus_acf4a7481cb123bbb30cb82dd50102ebd}{get\+Vardas}} () const
+\item 
+const std::\+string \& \doxymbox{\hyperlink{class_zmogus_af6fa0216be160cd70589a193709a0b36}{get\+Pavarde}} () const
+\item 
+void \doxymbox{\hyperlink{class_zmogus_a5c20a446b8cbb85cf6033d0c3a8a009d}{set\+Vardas}} (const std::\+string \&value)
+\begin{DoxyCompactList}\small\item\em Nustato varda. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_zmogus_a5bb87d14f5d85da63d2d33f6d3171715}{set\+Pavarde}} (const std::\+string \&value)
+\begin{DoxyCompactList}\small\item\em Nustato pavarde. \end{DoxyCompactList}\item 
+virtual std::\+string \doxymbox{\hyperlink{class_zmogus_ac0cbaff86ba113aa32e72c13fc208818}{tipas}} () const =0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Apsaugoti Atributai}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{class_zmogus_a80e72cd553492344884a264a72ce33d2}{vardas\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Zmogaus vardas. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_zmogus_a85cd6103a5f887059263d15413a3f081}{pavarde\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Zmogaus pavarde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Smulkus aprašymas}
+Abstrakti bazine klase bendriems zmogaus duomenims saugoti. 
+
+Klase saugo varda ir pavarde. Pure virtual metodas \doxylink{class_zmogus_ac0cbaff86ba113aa32e72c13fc208818}{tipas()} padaro klase abstrakcia, todel tiesioginiu \doxylink{class_zmogus}{Zmogus} objektu kurti negalima. 
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8h_source}{funkcijos.\+h}} eilutėje \doxymbox{\hyperlink{funkcijos_8h_source_l00033}{33}}.
+
+
+
+\label{class_zmogus_doc-constructors}
+\Hypertarget{class_zmogus_doc-constructors}
+\doxysubsection{Konstruktoriaus ir Destruktoriaus Dokumentacija}
+\Hypertarget{class_zmogus_aa7a8ba4d3c4778f9b35d59eef3e72574}\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_zmogus_aa7a8ba4d3c4778f9b35d59eef3e72574} 
+Zmogus::\+\+Zmogus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sukuria tuscia zmogu. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00004}{4}}.
+
+\Hypertarget{class_zmogus_ae6bfb71e4c8fddf15f3a19b4bcd6fd26}\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_zmogus_ae6bfb71e4c8fddf15f3a19b4bcd6fd26} 
+Zmogus::\+\+Zmogus (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{vardas}{, }\item[{const std::\+string \&}]{pavarde}{}\end{DoxyParamCaption})}
+
+
+
+Sukuria zmogu su vardu ir pavarde. 
+
+
+\begin{DoxyParams}{Parametrai}
+{\em vardas} & Vardas. \\
+\hline
+{\em pavarde} & Pavarde. \\
+\hline
+\end{DoxyParams}
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00007}{7}}.
+
+\Hypertarget{class_zmogus_a6183937c7da8254430a6c99cfa89fe69}\index{Zmogus@{Zmogus}!````~Zmogus@{\texorpdfstring{$\sim$}{\string~}Zmogus}}
+\index{````~Zmogus@{\texorpdfstring{$\sim$}{\string~}Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Zmogus()}{\string~Zmogus()}}
+{\footnotesize\ttfamily \label{class_zmogus_a6183937c7da8254430a6c99cfa89fe69} 
+virtual Zmogus::\+\texorpdfstring{$\sim$}{\string~}\+Zmogus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtualus destruktorius saugiam paveldetu objektu naikinimui. 
+
+
+
+\label{class_zmogus_doc-func-members}
+\Hypertarget{class_zmogus_doc-func-members}
+\doxysubsection{Metodų Dokumentacija}
+\Hypertarget{class_zmogus_af6fa0216be160cd70589a193709a0b36}\index{Zmogus@{Zmogus}!getPavarde@{getPavarde}}
+\index{getPavarde@{getPavarde}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{getPavarde()}{getPavarde()}}
+{\footnotesize\ttfamily \label{class_zmogus_af6fa0216be160cd70589a193709a0b36} 
+const std::\+string \& Zmogus::\+get\+Pavarde (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Gražina}
+Zmogaus pavarde. 
+\end{DoxyReturn}
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00014}{14}}.
+
+\Hypertarget{class_zmogus_acf4a7481cb123bbb30cb82dd50102ebd}\index{Zmogus@{Zmogus}!getVardas@{getVardas}}
+\index{getVardas@{getVardas}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{getVardas()}{getVardas()}}
+{\footnotesize\ttfamily \label{class_zmogus_acf4a7481cb123bbb30cb82dd50102ebd} 
+const std::\+string \& Zmogus::\+get\+Vardas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Gražina}
+Zmogaus vardas. 
+\end{DoxyReturn}
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00010}{10}}.
+
+\Hypertarget{class_zmogus_a5bb87d14f5d85da63d2d33f6d3171715}\index{Zmogus@{Zmogus}!setPavarde@{setPavarde}}
+\index{setPavarde@{setPavarde}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{setPavarde()}{setPavarde()}}
+{\footnotesize\ttfamily \label{class_zmogus_a5bb87d14f5d85da63d2d33f6d3171715} 
+void Zmogus::\+set\+Pavarde (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Nustato pavarde. 
+
+
+\begin{DoxyParams}{Parametrai}
+{\em value} & Nauja pavarde. \\
+\hline
+\end{DoxyParams}
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00022}{22}}.
+
+\Hypertarget{class_zmogus_a5c20a446b8cbb85cf6033d0c3a8a009d}\index{Zmogus@{Zmogus}!setVardas@{setVardas}}
+\index{setVardas@{setVardas}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{setVardas()}{setVardas()}}
+{\footnotesize\ttfamily \label{class_zmogus_a5c20a446b8cbb85cf6033d0c3a8a009d} 
+void Zmogus::\+set\+Vardas (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Nustato varda. 
+
+
+\begin{DoxyParams}{Parametrai}
+{\em value} & Naujas vardas. \\
+\hline
+\end{DoxyParams}
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8cpp_source}{funkcijos.\+cpp}} eilutėje \doxymbox{\hyperlink{funkcijos_8cpp_source_l00018}{18}}.
+
+\Hypertarget{class_zmogus_ac0cbaff86ba113aa32e72c13fc208818}\index{Zmogus@{Zmogus}!tipas@{tipas}}
+\index{tipas@{tipas}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{tipas()}{tipas()}}
+{\footnotesize\ttfamily \label{class_zmogus_ac0cbaff86ba113aa32e72c13fc208818} 
+virtual std::\+string Zmogus::\+tipas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\begin{DoxyReturn}{Gražina}
+Konkretus paveldetos klases tipas. 
+\end{DoxyReturn}
+
+
+Realizuota \doxymbox{\hyperlink{class_studentas_a9f5eaeb4fb7c599a93ec0d516f771c7b}{Studentas}}.
+
+
+
+\label{class_zmogus_doc-variable-members}
+\Hypertarget{class_zmogus_doc-variable-members}
+\doxysubsection{Atributų Dokumentacija}
+\Hypertarget{class_zmogus_a85cd6103a5f887059263d15413a3f081}\index{Zmogus@{Zmogus}!pavarde\_@{pavarde\_}}
+\index{pavarde\_@{pavarde\_}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{pavarde\_}{pavarde\_}}
+{\footnotesize\ttfamily \label{class_zmogus_a85cd6103a5f887059263d15413a3f081} 
+std::\+string Zmogus::\+pavarde\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Zmogaus pavarde. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8h_source}{funkcijos.\+h}} eilutėje \doxymbox{\hyperlink{funkcijos_8h_source_l00036}{36}}.
+
+\Hypertarget{class_zmogus_a80e72cd553492344884a264a72ce33d2}\index{Zmogus@{Zmogus}!vardas\_@{vardas\_}}
+\index{vardas\_@{vardas\_}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{vardas\_}{vardas\_}}
+{\footnotesize\ttfamily \label{class_zmogus_a80e72cd553492344884a264a72ce33d2} 
+std::\+string Zmogus::\+vardas\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Zmogaus vardas. 
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{funkcijos_8h_source}{funkcijos.\+h}} eilutėje \doxymbox{\hyperlink{funkcijos_8h_source_l00035}{35}}.
+
+
+
+Dokumentacija šiai klasei sugeneruota iš šių failų:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{funkcijos_8h}{funkcijos.\+h}}\item 
+\doxymbox{\hyperlink{funkcijos_8cpp}{funkcijos.\+cpp}}\end{DoxyCompactItemize}

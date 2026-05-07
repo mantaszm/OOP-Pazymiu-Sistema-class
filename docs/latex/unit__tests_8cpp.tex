@@ -1,0 +1,156 @@
+\doxysection{unit\+\_\+tests.\+cpp Failo Nuoroda}
+\hypertarget{unit__tests_8cpp}{}\label{unit__tests_8cpp}\index{unit\_tests.cpp@{unit\_tests.cpp}}
+{\ttfamily \+\#include "{}funkcijos.\+h"{}}\newline
+{\ttfamily \+\#include $<$catch2/\+catch\+\_\+test\+\_\+macros.\+hpp$>$}\newline
+{\ttfamily \+\#include $<$cmath$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \+\#include $<$utility$>$}\newline
+Įtraukimo priklausomybių diagrama unit\+\_\+tests.\+cpp:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unit__tests_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Funkcijos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}{TEST\+\_\+\+CASE}} ("{}Zmogus yra abstrakti bazine klase"{}, "{}\+[zmogus]\+\+[oop]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a0ae8017178fddf6728cd8f9442ee5094}{TEST\+\_\+\+CASE}} ("{}Numatytasis konstruktorius sukuria tuscia studenta"{}, "{}\+[studentas]\+\+[constructor]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a906f7e9e180fa6095e7d4e9ee80c5ef3}{TEST\+\_\+\+CASE}} ("{}Parametrinis konstruktorius uzpildo visus laukus"{}, "{}\+[studentas]\+\+[constructor]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a1a7c421f46a2defea08ee2bfc5fc4ba1}{TEST\+\_\+\+CASE}} ("{}Rule of Five:\+ copy konstruktorius atlieka gilia kopija"{}, "{}\+[studentas]\+\+[rule-\/of-\/five]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_ad475fce3a10020ec7faf9f07382a5160}{TEST\+\_\+\+CASE}} ("{}Rule of Five:\+ copy assignment teisingai priskiria reiksmes"{}, "{}\+[studentas]\+\+[rule-\/of-\/five]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_ad6960306d6c9fb95d2be3545aa512c2a}{TEST\+\_\+\+CASE}} ("{}Rule of Five:\+ move konstruktorius perkelia duomenis"{}, "{}\+[studentas]\+\+[rule-\/of-\/five]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a80079583d151be91d0f804901a2f1a14}{TEST\+\_\+\+CASE}} ("{}Rule of Five:\+ move assignment perkelia duomenis"{}, "{}\+[studentas]\+\+[rule-\/of-\/five]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a46129989a8ff9eb732d41fad2f6d7b7b}{TEST\+\_\+\+CASE}} ("{}Rule of Five:\+ destruktorius leidzia saugiai naikinti per bazine rodykle"{}, "{}\+[studentas]\+\+[rule-\/of-\/five]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a0e973dab494044b7e0501bf4ed28756c}{TEST\+\_\+\+CASE}} ("{}Galutinio balo skaiciavimas pagal vidurki ir mediana"{}, "{}\+[studentas]\+\+[calculation]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_ac44625f7446d710181052db76312e231}{TEST\+\_\+\+CASE}} ("{}Failo nuskaitymas issaugo ND, kai save\+ND=true"{}, "{}\+[file]\+"{})
+\item 
+\doxymbox{\hyperlink{unit__tests_8cpp_a9af2b644bef9933f11f80c325bb456c7}{TEST\+\_\+\+CASE}} ("{}Vector skirstymo strategija atskiria vargsiukus"{}, "{}\+[split]\+\+[vector]\+"{})
+\end{DoxyCompactItemize}
+
+
+\label{unit__tests_8cpp_doc-func-members}
+\Hypertarget{unit__tests_8cpp_doc-func-members}
+\doxysubsection{Funkcijos Dokumentacija}
+\Hypertarget{unit__tests_8cpp_ac44625f7446d710181052db76312e231}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_ac44625f7446d710181052db76312e231} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Failo nuskaitymas issaugo}]{ND}{}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00120}{120}}.
+
+\Hypertarget{unit__tests_8cpp_a0e973dab494044b7e0501bf4ed28756c}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a0e973dab494044b7e0501bf4ed28756c} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Galutinio balo skaiciavimas pagal vidurki ir mediana"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[calculation]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00113}{113}}.
+
+\Hypertarget{unit__tests_8cpp_a0ae8017178fddf6728cd8f9442ee5094}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a0ae8017178fddf6728cd8f9442ee5094} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Numatytasis konstruktorius sukuria tuscia studenta"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[constructor]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00026}{26}}.
+
+\Hypertarget{unit__tests_8cpp_a906f7e9e180fa6095e7d4e9ee80c5ef3}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a906f7e9e180fa6095e7d4e9ee80c5ef3} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Parametrinis konstruktorius uzpildo visus laukus"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[constructor]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00037}{37}}.
+
+\Hypertarget{unit__tests_8cpp_ad475fce3a10020ec7faf9f07382a5160}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_ad475fce3a10020ec7faf9f07382a5160} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Rule of Five:\+ copy assignment teisingai priskiria reiksmes"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[rule-\/of-\/five]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00063}{63}}.
+
+\Hypertarget{unit__tests_8cpp_a1a7c421f46a2defea08ee2bfc5fc4ba1}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a1a7c421f46a2defea08ee2bfc5fc4ba1} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Rule of Five:\+ copy konstruktorius atlieka gilia kopija"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[rule-\/of-\/five]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00048}{48}}.
+
+\Hypertarget{unit__tests_8cpp_a46129989a8ff9eb732d41fad2f6d7b7b}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a46129989a8ff9eb732d41fad2f6d7b7b} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Rule of Five:\+ destruktorius leidzia saugiai naikinti per bazine rodykle"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[rule-\/of-\/five]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00107}{107}}.
+
+\Hypertarget{unit__tests_8cpp_a80079583d151be91d0f804901a2f1a14}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a80079583d151be91d0f804901a2f1a14} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Rule of Five:\+ move assignment perkelia duomenis"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[rule-\/of-\/five]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00092}{92}}.
+
+\Hypertarget{unit__tests_8cpp_ad6960306d6c9fb95d2be3545aa512c2a}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [9/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_ad6960306d6c9fb95d2be3545aa512c2a} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Rule of Five:\+ move konstruktorius perkelia duomenis"{}}]{}{, }\item[{"{}"{}}]{}{\+[studentas]\+\+[rule-\/of-\/five]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00077}{77}}.
+
+\Hypertarget{unit__tests_8cpp_a9af2b644bef9933f11f80c325bb456c7}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [10/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a9af2b644bef9933f11f80c325bb456c7} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector skirstymo strategija atskiria vargsiukus"{}}]{}{, }\item[{"{}"{}}]{}{\+[split]\+\+[vector]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00136}{136}}.
+
+\Hypertarget{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce}\index{unit\_tests.cpp@{unit\_tests.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!unit\_tests.cpp@{unit\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [11/11]}}
+{\footnotesize\ttfamily \label{unit__tests_8cpp_a884c9add769027b8c7bd0ab2189fafce} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Zmogus yra abstrakti bazine klase"{}}]{}{, }\item[{"{}"{}}]{}{\+[zmogus]\+\+[oop]\+}\end{DoxyParamCaption})}
+
+
+
+Apibrėžimas failo \doxymbox{\hyperlink{unit__tests_8cpp_source}{unit\+\_\+tests.\+cpp}} eilutėje \doxymbox{\hyperlink{unit__tests_8cpp_source_l00014}{14}}.
+
