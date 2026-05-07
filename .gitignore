@@ -1,0 +1,35 @@
+# Build artifacts
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.user
+
+# Compiled objects / binaries
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+programa
+unit_tests
+app
+
+# IDE/editor files
+.vscode/
+.idea/
+.vs/
+*.suo
+*.user
+*.swp
+.DS_Store
+
+# Generated runtime files
+studentai*.txt
+vargsiukai*.txt
+kietiakai*.txt
+test_generated.txt
+test_input*.txt
