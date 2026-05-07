@@ -1,271 +1,262 @@
-# OOP pažymių skaičiavimo sistema
-
-Ši programa skirta studentų duomenų nuskaitymui, galutinio balo skaičiavimui pagal vidurkį arba medianą, studentų rūšiavimui bei skaidymui į atskiras grupes. Programoje realizuota `Studentas` klasė, keli konteinerių tipai (`vector`, `list`, `deque`) ir keli skirstymo algoritmai.
-
-## Pagrindinės galimybės
-
-| Funkcionalumas | Aprašymas |
-|---|---|
-| Studentų nuskaitymas | Duomenys gali būti įvedami ranka, generuojami automatiškai arba skaitomi iš failo |  
-| Galutinio balo skaičiavimas | Skaičiuojamas pagal namų darbų vidurkį arba medianą |
-| Failų generavimas | Sugeneruojami testiniai failai su pasirinktu studentų ir ND kiekiu |
-| Studentų skirstymas | Studentai išskirstomi į „vargsiukus“ ir „kietiakus“ |
-| Keli konteineriai | Naudojami `vector`, `list`, `deque` |
-| Rule of Five | Klasėje realizuoti kopijavimo, perkėlimo metodai ir destruktorius |
-| Įvesties/išvesties operatoriai | Perdengti `operator>>` ir `operator<<` darbui su `Studentas` klase |
-
-## Abstrakti klasė `Zmogus`
-
-`v1.5` versijoje į programą įvesta bazinė abstrakti klasė `Zmogus`, skirta aprašyti bendras žmogaus savybes.
+# OOP Pazymiu Sistema
 
-### Paskirtis
+Studentu pazymiu skaiciavimo sistema, realizuota C++ kalba.
 
-Klasė `Zmogus` apibrėžia bendrus duomenis, kurie yra bendri visiems žmonėms:
+Programa leidzia:
+- ivesti studentu duomenis terminale;
+- nuskaityti studentus is failo;
+- sugeneruoti studentu failus;
+- skaiciuoti galutini bala pagal vidurki arba mediana;
+- rusiuoti studentus;
+- skirstyti studentus i vargsiukus ir kietiakus;
+- testuoti klases metodus ir papildomus unit testus.
 
-- vardas
-- pavardė
+## Naudojamos technologijos
 
-Ši klasė naudojama kaip pagrindas išvestinėms klasėms (pvz., `Studentas`), kurios praplečia funkcionalumą.
+- C++20
+- CMake
+- Catch2 unit testams
+- Doxygen dokumentacijai
+- Graphviz Doxygen grafikams
+- MiKTeX arba Overleaf PDF dokumentacijai
 
-### Laukai
+## Projekto struktura
 
-| Laukas | Tipas | Aprašymas |
-|---|---|---|
-| `vardas_` | `std::string` | Žmogaus vardas |
-| `pavarde_` | `std::string` | Žmogaus pavardė |
+    .
+    ├── CMakeLists.txt
+    ├── Doxyfile
+    ├── README.md
+    ├── vector/
+    │   ├── funkcijos.h
+    │   ├── funkcijos.cpp
+    │   ├── main.cpp
+    │   └── tests.cpp
+    └── tests/
+        └── unit_tests.cpp
 
-### Funkcijų aprašymas
+## Release'ai
 
-### Klasės `Zmogus` metodai
+### v1.0
 
-| Funkcija | Tipas | Aprašymas |
-|---|---|---|
-| `Zmogus()` | Konstruktorius | Inicializuoja tuščias reikšmes |
-| `Zmogus(const std::string&, const std::string&)` | Konstruktorius | Inicializuoja vardą ir pavardę |
-| `~Zmogus()` | Virtualus destruktorius | Užtikrina korektišką paveldėtų objektų naikinimą |
-| `getVardas()` | Geteris | Grąžina vardą |
-| `getPavarde()` | Geteris | Grąžina pavardę |
-| `setVardas()` | Seteris | Nustato vardą |
-| `setPavarde()` | Seteris | Nustato pavardę |
-| `tipas()` | Pure virtual metodas | Padaro klasę abstrakčia |
+Pradine programos versija:
+- studentu duomenu ivedimas;
+- galutinio balo skaiciavimas;
+- failu nuskaitymas;
+- studentu isvedimas.
 
-## Klasė `Studentas`
+### v1.1
 
-Klasėje saugomi šie duomenys:
+Pridetas studentu skirstymas i dvi grupes:
+- vargsiukai;
+- kietiakai.
 
-- studento vardas
-- studento pavardė
-- egzamino pažymys
-- namų darbų vidurkis
-- namų darbų mediana
-- namų darbų pažymių konteineris
+Testuotos skirtingos konteineriu strategijos.
 
-Naudojami laukai:
+### v1.2
 
-| Laukas | Tipas | Paskirtis |
-|---|---|---|
-| `vardas_` | `std::string` | Studento vardas |
-| `pavarde_` | `std::string` | Studento pavardė |
-| `egzaminas_` | `uint8_t` | Egzamino pažymys |
-| `namuDarbaiVid100_` | `uint16_t` | Namų darbų vidurkis padaugintas iš 100 |
-| `namuDarbaiMed100_` | `uint16_t` | Namų darbų mediana padauginta iš 100 |
-| `ND_` | `std::vector<short int>` | Namų darbų pažymių sąrašas |
+Pridetas darbas su skirtingais STL konteineriais:
+- std::vector;
+- std::list;
+- std::deque.
 
-## Funkcijų aprašymas
+Buvo lyginamos konteineriu veikimo strategijos ir skirstymo i grupes laikas.
 
-### Klasės `Studentas` metodai
+### v1.5
 
-| Funkcija | Tipas | Aprašymas |
-|---|---|---|
-| `Studentas()` | Konstruktorius | Inicializuoja objektą tuščiomis reikšmėmis |
-| `Studentas(...)` | Konstruktorius | Sukuria objektą su perduotais duomenimis |
-| `Studentas(const Studentas&)` | Copy konstruktorius | Sukuria objekto kopiją |
-| `operator=(const Studentas&)` | Copy assignment | Priskiria vieno objekto reikšmes kitam |
-| `Studentas(Studentas&&)` | Move konstruktorius | Perkelia duomenis iš kito objekto |
-| `operator=(Studentas&&)` | Move assignment | Perkelia duomenis į egzistuojantį objektą |
-| `~Studentas()` | Destruktorius | Sunaikina objektą |
+Galutine objektinio programavimo versija:
+- sukurta abstrakti bazine klase Zmogus;
+- sukurta isvestine klase Studentas;
+- realizuota Rule of Five:
+  - destruktorius;
+  - copy konstruktorius;
+  - copy assignment operatorius;
+  - move konstruktorius;
+  - move assignment operatorius;
+- prideti Catch2 unit testai;
+- prideta Doxygen dokumentacija;
+- paruostas CMakeLists.txt.
 
----
+## Idiegimo instrukcija Windows aplinkoje
 
-### Geteriai ir seteriai
+### Reikalinga programine iranga
 
-| Funkcija | Aprašymas |
-|---|---|
-| `getVardas()` | Grąžina vardą |
-| `getPavarde()` | Grąžina pavardę |
-| `getEgzaminas()` | Grąžina egzamino pažymį |
-| `getNamuDarbaiVid100()` | Grąžina vidurkį |
-| `getNamuDarbaiMed100()` | Grąžina medianą |
-| `getND()` | Grąžina ND sąrašą |
-| `setVardas()` | Nustato vardą |
-| `setPavarde()` | Nustato pavardę |
-| `setEgzaminas()` | Nustato egzaminą |
-| `setNamuDarbaiVid100()` | Nustato vidurkį |
-| `setNamuDarbaiMed100()` | Nustato medianą |
-| `setND()` | Nustato ND sąrašą |
-| `addND()` | Prideda pažymį |
+Windows aplinkoje reikia tureti:
+- C++20 palaikanti kompiliatoriu, pvz. MSVC arba MinGW;
+- CMake;
+- Git;
+- Doxygen;
+- Graphviz, jei norima matyti Doxygen klasiu grafus;
+- MiKTeX, jei norima PDF dokumentacija generuoti lokaliai.
 
----
+Catch2 papildomai diegti nereikia, nes jis automatiskai atsiunciamas per CMake FetchContent.
 
-### Skaičiavimo funkcijos
+### CMake diegimas
 
-| Funkcija | Aprašymas |
-|---|---|
-| `galutinisVid()` | Skaičiuoja galutinį balą pagal vidurkį |
-| `galutinisMed()` | Skaičiuoja galutinį balą pagal medianą |
+Atsisiuskite CMake Windows installer ir diegimo metu pasirinkite:
 
----
+    Add CMake to the system PATH for all users
 
-### Perdengti operatoriai
+arba:
 
-| Operatorius | Aprašymas |
-|---|---|
-| `operator>>` | Nuskaito studento duomenis iš srauto (`cin`, failo) |
-| `operator<<` | Išveda studento duomenis į srautą (`cout`, failą) |
+    Add CMake to the PATH for current user
 
----
+Po diegimo uzdarykite terminala ir atidarykite ji is naujo.
 
-### Failų funkcijos
+Patikrinimas:
 
-| Funkcija | Aprašymas |
-|---|---|
-| `readFile()` | Nuskaito studentus iš failo |
-| `generateFile()` | Sugeneruoja atsitiktinių duomenų failą |
-| `splitStudents()` | Padalina studentus į grupes |
+    cmake --version
 
----
+Jeigu komanda neatpazistama, reikia i Windows PATH prideti:
 
-### Įvesties funkcija
+    C:\Program Files\CMake\bin
 
-| Funkcija | Aprašymas |
-|---|---|
-| `readTerminal()` | Leidžia įvesti duomenis rankiniu arba automatiniu būdu |
+### Doxygen ir Graphviz
 
----
+Doxygen reikalingas HTML ir LaTeX dokumentacijos generavimui.
 
-### Testavimo funkcijos
+Graphviz reikalingas klasiu grafikams.
 
-| Funkcija | Aprašymas |
-|---|---|
-| `testFileCreation()` | Matuoja failo kūrimo laiką |
-| `testDataProcessing()` | Matuoja nuskaitymo ir skirstymo laiką |
-| `testTime()` | Paleidžia visus testus |
+Patikrinimas:
 
----
+    doxygen --version
+    dot -V
 
-### Skirstymo strategijos
+Jeigu dot komanda neatpazistama, i Windows PATH reikia prideti Graphviz bin katalogą, pvz.:
 
-| Funkcija | Konteineris | Aprašymas |
-|---|---|---|
-| `splitVector1` | vector | Paprastas skaidymas |
-| `splitVector2` | vector | Naudoja erase |
-| `splitVector3` | vector | Naudoja partition |
-| `splitList1` | list | Paprastas skaidymas |
-| `splitList2` | list | Naudoja erase |
-| `splitList3` | list | Naudoja splice |
-| `splitDeque1` | deque | Paprastas skaidymas |
-| `splitDeque2` | deque | Naudoja erase |
-| `splitDeque3` | deque | Naudoja partition |
+    C:\Program Files\Graphviz\bin
 
-# Eksperimentinė `struct` ir `class` realizacijų spartos analizė
+Jeigu Doxygen vis tiek neranda Graphviz, Doxyfile faile galima nurodyti:
 
-## Užduoties tikslas
+    DOT_PATH = "C:/Program Files/Graphviz/bin"
 
-Šio darbo tikslas – palyginti dviejų programos realizacijų spartą:
+## Kompiliavimas su CMake Windows aplinkoje
 
-- ankstesnioji versija, kur naudojamas `struct`
-- dabartinę versiją, kur naudojama `class`
+Is pagrindinio projekto katalogo paleiskite:
 
-Palyginimas atliekamas naudojant:
+    cmake -S . -B build
+    cmake --build build
 
-- vieną fiksuotą konteinerį
-- greičiausią dalijimo strategiją
-- skirtingo dydžio duomenų failus (`100000` ir `1000000`)
-- skirtingus kompiliatoriaus optimizavimo lygius (`-O1`, `-O2`, `-O3`)
+Programos paleidimas:
 
----
+    build\Debug\programa.exe
 
-## Testavimo konfigūracija
+Jeigu naudojama Release konfiguracija:
 
-Remiantis ankstesniais testais, greičiausia kombinacija buvo:
+    cmake -S . -B build
+    cmake --build build --config Release
+    build\Release\programa.exe
 
-- **Konteineris:** `std::list`
-- **Strategija:** 3 strategija
+## Unit testai
 
-Todėl visi tolimesni testai buvo atliekami naudojant šią konfigūraciją.
+Unit testams naudojamas Catch2 framework'as.
 
----
+Testai yra faile:
 
-## Testavimo metodika
+    tests/unit_tests.cpp
 
-Buvo matuojamas bendras programos veikimo laikas (sekundėmis), naudojant du failų dydžius:
+Testai tikrina:
+- abstrakcios bazines klases Zmogus veikima;
+- Studentas numatytaji konstruktoriu;
+- Studentas parametrini konstruktoriu;
+- Rule of Five metodus;
+- galutinio balo skaiciavima;
+- failo nuskaityma;
+- studentu skirstyma naudojant std::vector.
 
-- `100000` įrašų
-- `1000000` įrašų
+Testu paleidimas Windows aplinkoje:
 
-Kiekvienas testas atliktas su šiais optimizavimo flag'ais:
+    cmake -S . -B build
+    cmake --build build
+    ctest --test-dir build --output-on-failure
 
-- `-O1`
-- `-O2`
-- `-O3`
+Jeigu naudojama Release konfiguracija:
 
-### Kompiliavimo pavyzdys
+    ctest --test-dir build -C Release --output-on-failure
 
-```bash
-g++ -O1 -std=c++20 main.cpp funkcijos.cpp -o programa_O1
-g++ -O2 -std=c++20 main.cpp funkcijos.cpp -o programa_O2
-g++ -O3 -std=c++20 main.cpp funkcijos.cpp -o programa_O3
-```
+## Doxygen dokumentacija
 
-## Rezultatai
+Dokumentacija generuojama naudojant Doxyfile.
 
-### Failas: 100000
+HTML ir LaTeX dokumentacijos generavimas:
 
-| Programa         | Optimizacija | struct (s) | class (s) | Greitesnė |
-|-----------------|-------------:|-----------:|--------------------:|----------:|
-| programa_O1.exe | O1           | 0.002257   | 0.002700            | struct    |
-| programa_O2.exe | O2           | 0.002057   | 0.002789            | struct    |
-| programa_O3.exe | O3           | 0.002289   | 0.002646            | struct    |
+    doxygen Doxyfile
 
----
+Po generavimo turi atsirasti:
 
-### Failas: 1000000
+    docs/html/
+    docs/latex/
 
-| Programa         | Optimizacija | struct (s) | class (s) | Greitesnė |
-|-----------------|-------------:|-----------:|--------------------:|----------:|
-| programa_O1.exe | O1           | 0.020480   | 0.025743            | struct    |
-| programa_O2.exe | O2           | 0.020358   | 0.026861            | struct    |
-| programa_O3.exe | O3           | 0.020960   | 0.030000            | struct    |
+HTML dokumentacijos pradzios failas:
 
-## Rezultatų analizė
+    docs/html/index.html
 
-Atlikus `struct` ir `class` realizacijų spartos tyrimą, naudojant `std::list` konteinerį ir trečią strategiją , buvo gauti šie rezultatai.
+## PDF dokumentacijos generavimas Windows aplinkoje
 
-### Pastebėjimai
+Jeigu idiegtas MiKTeX, PDF galima sugeneruoti taip:
 
-- Visais testavimo atvejais greitesnė buvo `struct` realizacija.
-- Su 100000 įrašų failu geriausias `struct` rezultatas buvo gautas naudojant `O2` optimizavimo lygį.
-- Su 1000000 įrašų failu geriausias `struct` rezultatas taip pat buvo gautas naudojant `O2`.
-- `class` realizacijoje geriausias rezultatas su 100000 įrašų buvo pasiektas naudojant `O3`, tačiau su 1000000 įrašų geriausias buvo `O1`.
-- Skirtumai tarp optimizavimo lygių nėra labai dideli, tačiau skirtumas tarp `struct` ir `class` visais atvejais yra aiškiai matomas.
-- Didesnio failo atveju `struct` pranašumas tampa dar ryškesnis.
+    cd docs\latex
+    pdflatex refman.tex
+    makeindex refman.idx
+    pdflatex refman.tex
+    pdflatex refman.tex
 
-### Spartumo skirtumai
+Po kompiliavimo turi atsirasti:
 
-#### 100000 įrašų failas
-- `O1`: `struct` greitesnis maždaug 0.000443 s
-- `O2`: `struct` greitesnis maždaug 0.000732 s
-- `O3`: `struct` greitesnis maždaug 0.000357 s
+    docs\latex\refman.pdf
 
-#### 1000000 įrašų failas
-- `O1`: `struct` greitesnis maždaug 0.005263 s
-- `O2`: `struct` greitesnis maždaug 0.006503 s
-- `O3`: `struct` greitesnis maždaug 0.009040 s
+Jeigu MiKTeX arba kito LaTeX kompiliatoriaus nera, galima naudoti Overleaf:
+1. Sugeneruokite dokumentacija su komanda doxygen Doxyfile.
+2. Ikelkite visa docs/latex katalogo turini i Overleaf.
+3. Overleaf projekte pagrindiniu failu pasirinkite refman.tex.
+4. Sugeneruokite PDF.
+5. Atsisiusta refman.pdf idekite atgal i projekto katalogą:
 
-## Programų dydžių palyginimas
+    docs\latex\refman.pdf
 
-| Optimizacija | class (KB) | struct (KB) | Skirtumas (struct - class) |
-|-------------:|--------------------:|------------:|----------:|
-| O1           | 192                 | 162         | -30 KB    |
-| O2           | 186                 | 154         | -32 KB    |
-| O3           | 242                 | 174         | -68 KB    |
+## Doxygen grafikai
+
+Doxygen klasiu grafams reikalingas Graphviz.
+
+Svarbiausi Doxyfile nustatymai grafikams:
+
+    HAVE_DOT               = YES
+    CLASS_DIAGRAMS         = YES
+    CLASS_GRAPH            = YES
+    COLLABORATION_GRAPH    = YES
+    INCLUDE_GRAPH          = YES
+    INCLUDED_BY_GRAPH      = YES
+    GRAPHICAL_HIERARCHY    = YES
+    DIRECTORY_GRAPH        = YES
+
+Jeigu collaboration graph nerodomas, pirmiausia patikrinkite:
+
+    dot -V
+
+Taip pat istrinkite sena dokumentacija ir sugeneruokite is naujo:
+
+    rmdir /s /q docs
+    doxygen Doxyfile
+
+## Naudojimosi instrukcija
+
+Paleidus programa vartotojui pateikiamas meniu. Jame galima pasirinkti:
+- duomenu ivedima ranka;
+- duomenu nuskaityma is failo;
+- studentu failo generavima;
+- rusiavima;
+- skirstyma i grupes;
+- konteineriu strategiju testavima;
+- klases metodu testavima.
+
+Bendras veikimo principas:
+1. Pasirenkamas duomenu gavimo budas.
+2. Studentu duomenys apdorojami.
+3. Apskaiciuojami galutiniai balai.
+4. Studentai gali buti surusiuoti arba suskirstyti.
+5. Rezultatai isvedami i terminala arba failus.
+
+## Rezultatu komentaras
+
+Naudojant STL konteinerius pastebima, kad std::vector daznai yra efektyvus del nuoseklaus atminties isdestymo. Taciau salinimo operacijose std::list arba std::deque kai kuriais atvejais gali veikti patogiau, priklausomai nuo pasirinktos skirstymo strategijos.
+
+Unit testai leidzia greitai patikrinti, ar pakeitus koda nebuvo sugadintas pagrindinis funkcionalumas. Ypac svarbu testuoti Rule of Five metodus, nes jie susije su objektu kopijavimu, perkelimu ir resursu valdymu.
