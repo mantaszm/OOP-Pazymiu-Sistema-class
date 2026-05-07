@@ -1,4 +1,4 @@
-# Build artifacts
+# Build katalogai
 build/
 cmake-build-*/
 CMakeFiles/
@@ -6,7 +6,11 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile.user
 
-# Compiled objects / binaries
+# CMake FetchContent / Catch2 atsisiuntimai
+_deps/
+*/_deps/
+
+# Kompiliuoti objektai ir binariniai failai
 *.o
 *.obj
 *.exe
@@ -14,22 +18,41 @@ Makefile.user
 *.a
 *.so
 *.dll
+*.dylib
 programa
 unit_tests
 app
 
-# IDE/editor files
+# IDE / editor failai
 .vscode/
 .idea/
 .vs/
 *.suo
 *.user
+*.vcxproj.user
 *.swp
+*.swo
 .DS_Store
 
-# Generated runtime files
+# Laikini / runtime failai
 studentai*.txt
 vargsiukai*.txt
 kietiakai*.txt
 test_generated.txt
+test_input.txt
+test_input_no_nd.txt
 test_input*.txt
+
+# Doxygen laikini failai
+docs/latex/*.aux
+docs/latex/*.idx
+docs/latex/*.ilg
+docs/latex/*.ind
+docs/latex/*.log
+docs/latex/*.out
+docs/latex/*.toc
+docs/latex/*.synctex.gz
+
+# OS failai
+Thumbs.db
+desktop.ini
